@@ -62,25 +62,6 @@
     
     <entry>
       <title>Html入门</title>
-      <link href="/2022/10/28/2022-11-3-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-      <url>/2022/10/28/2022-11-3-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="（一）HTML简介"><a href="#（一）HTML简介" class="headerlink" title="（一）HTML简介"></a>（一）HTML简介</h1><h2 id="1-网页"><a href="#1-网页" class="headerlink" title="1. 网页"></a>1. 网页</h2><h3 id="1-1-什么是网页"><a href="#1-1-什么是网页" class="headerlink" title="1.1 什么是网页"></a>1.1 什么是网页</h3><p>网页是根据因特网上一定的规则，使用html等制作的用于展示特定内容的网页集合。</p><p>网页是构成网站的基本元素。</p><p>网页是图片、链接、文字、声音、视频等源深路组成，其实就是一个html文件。</p><h3 id="1-2-什么是HTML"><a href="#1-2-什么是HTML" class="headerlink" title="1.2 什么是HTML"></a>1.2 什么是HTML</h3><p>HTML指的是超文本标记语言（Hyper Text Markup Language）,它是用来描述网页的一种语言。</p><p>HTML不是一种编程语言，而是一种标记语言（markup language）。 标记语言是一套标记标签（markup tag）。</p><p><strong>超文本的含义：</strong></p><ol><li><p>它可以加入图片、声音、动画、多媒体等内容（超越文本限制）。</p></li><li><p>它可以从一个文件跳转到另一个文件，于世界各地主机的文件连接（超级链接文本）。</p></li></ol><h3 id="1-3-网页的形成"><a href="#1-3-网页的形成" class="headerlink" title="1.3 网页的形成"></a>1.3 网页的形成</h3><p>网页由网页元素组成，这些元素通过html标签描述出来，然后通过浏览器解析并显示出来。</p><h2 id="2-常用浏览器及其内核"><a href="#2-常用浏览器及其内核" class="headerlink" title="2. 常用浏览器及其内核"></a>2. 常用浏览器及其内核</h2><h3 id="2-1-常用浏览器"><a href="#2-1-常用浏览器" class="headerlink" title="2.1 常用浏览器"></a>2.1 常用浏览器</h3><p>浏览器是网页显示、运行的平台。</p><p>五大浏览器有 IE、Firefox、Chrome、Safari 和 Opera。</p><p>四大内核：Trident, Gecko, Webkit, Blink</p><h3 id="2-2-浏览器内核"><a href="#2-2-浏览器内核" class="headerlink" title="2.2 浏览器内核"></a>2.2 浏览器内核</h3><p>浏览器内核（渲染引擎）：负责读取网页内容，整理讯息，计算网页的显示方式并显示页面。</p><table><thead><tr><th>浏览器</th><th>内核</th><th>备注</th></tr></thead><tbody><tr><td>IE</td><td>Trident</td><td>IE、猎豹安全、360、百度浏览器</td></tr><tr><td>firefox</td><td>Gecko</td><td>火狐浏览器内核</td></tr><tr><td>Safari</td><td>Webkit</td><td>苹果浏览器内核</td></tr><tr><td>Chrome&#x2F;Opera</td><td>Blink</td><td>chrome&#x2F;opera 浏览器内核</td></tr></tbody></table><h2 id="3-Web标准"><a href="#3-Web标准" class="headerlink" title="3. Web标准"></a>3. Web标准</h2><p>Web标准是由W3C组织和其他标准化组织制定的一系列标准的集合。</p><h3 id="3-1-为什么需要Web标准"><a href="#3-1-为什么需要Web标准" class="headerlink" title="3.1 为什么需要Web标准"></a>3.1 为什么需要Web标准</h3><p>浏览器不同，它们显示的页面或者排版有些许差异。</p><p>遵循Web标准除了可以让不同的开发人员写出的页面更标准、更统一外，还有以下优点：</p><ol><li>让Web标准发展前景更为广阔</li><li>内容能被更广泛的设备访问。</li><li>更容易被搜索引擎了搜索。</li><li>降低网站流量费用。</li><li>易于维护。</li><li>提高页面浏览速度。</li></ol><h3 id="3-2-Web标准的构成"><a href="#3-2-Web标准的构成" class="headerlink" title="3.2 Web标准的构成"></a>3.2 Web标准的构成</h3><table><thead><tr><th>标准</th><th>说明</th></tr></thead><tbody><tr><td>结构</td><td>结构对网页元素进行整理和分类，现阶段主要是HTML</td></tr><tr><td>表现</td><td>表现用于设置网页元素的版式、颜色、大小等外观样式，主要是指CSS</td></tr><tr><td>行为</td><td>行为是指网页模型的定义以及交互的编写，现阶段主要是JS</td></tr></tbody></table><p>Web标准提出的最佳体验方案：结构、表现、行为相分离。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> html,入门 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Html入门</title>
       <link href="/2022/10/28/html%E5%85%A5%E9%97%A8/"/>
       <url>/2022/10/28/html%E5%85%A5%E9%97%A8/</url>
       
