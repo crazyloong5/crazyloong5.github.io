@@ -1,5 +1,5 @@
-http://crazyloong.icu/2023/10/12/Python/
 http://crazyloong.icu/2023/10/11/Swift%E5%85%A5%E9%97%A8/
+http://crazyloong.icu/2023/10/12/Python/
 http://crazyloong.icu/2023/10/12/Linux/
 http://crazyloong.icu/2023/05/28/Effective-Java/
 http://crazyloong.icu/2023/05/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
@@ -15,6 +15,7 @@ http://crazyloong.icu/
 http://crazyloong.icu/tags/%E6%9D%82%E9%A1%B9/
 http://crazyloong.icu/tags/Java/
 http://crazyloong.icu/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
+http://crazyloong.icu/tags/ios/
 http://crazyloong.icu/tags/Linux/
 http://crazyloong.icu/tags/Python/
 http://crazyloong.icu/categories/%E6%9D%82%E9%A1%B9/
