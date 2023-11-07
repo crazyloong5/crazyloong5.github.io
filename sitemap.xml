@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://crazyloong.icu/2023/05/27/MarkDown/</loc>
+    
+    <lastmod>2023-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://crazyloong.icu/2023/01/02/SQL/</loc>
     
     <lastmod>2023-11-07</lastmod>
@@ -68,15 +77,6 @@
     <loc>http://crazyloong.icu/pictures/index.html</loc>
     
     <lastmod>2023-05-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://crazyloong.icu/2023/05/27/MarkDown/</loc>
-    
-    <lastmod>2023-05-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
