@@ -1,3 +1,4 @@
+http://crazyloong.icu/2023/11/14/MybatisPlus/
 http://crazyloong.icu/2023/11/12/SpringBoot/
 http://crazyloong.icu/2023/11/10/SpringMVC/
 http://crazyloong.icu/2023/11/10/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B-Stream%E6%B5%81/
