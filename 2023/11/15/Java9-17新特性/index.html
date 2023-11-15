@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java9-17新特性 | Sin's Blog</title><meta name="author" content="crazyloong5"><meta name="copyright" content="crazyloong5"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java 9 新特性模块机制注意：由于模块化开发颗粒度很小，引入依赖时还要将依赖引入模块，配置时很麻烦，所以实际开发中应用不会很广泛，我们只做了解 在我们之前的开发中，当我们导入一个 jar 包作为依赖时（包括 JDK 官方库），很多功能我们并不会用到，但是由于同一个依赖不可拆分，导致我们可能只用到其中一部分内容，却要引用一个完整的类库。实际上我们可以把用不到的类库排除掉，大大降低依赖库的规模。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java9-17新特性">
+<meta property="og:url" content="http://crazyloong.icu/2023/11/15/Java9-17%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="Sin&#39;s Blog">
+<meta property="og:description" content="Java 9 新特性模块机制注意：由于模块化开发颗粒度很小，引入依赖时还要将依赖引入模块，配置时很麻烦，所以实际开发中应用不会很广泛，我们只做了解 在我们之前的开发中，当我们导入一个 jar 包作为依赖时（包括 JDK 官方库），很多功能我们并不会用到，但是由于同一个依赖不可拆分，导致我们可能只用到其中一部分内容，却要引用一个完整的类库。实际上我们可以把用不到的类库排除掉，大大降低依赖库的规模。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/11/15/hK5AdvNHIq6eERb.jpg">
+<meta property="article:published_time" content="2023-11-15T13:06:41.927Z">
+<meta property="article:modified_time" content="2023-11-15T15:48:24.324Z">
+<meta property="article:author" content="crazyloong5">
+<meta property="article:tag" content="语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/11/15/hK5AdvNHIq6eERb.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/11/10/p54cXouLgmC31jO.png"><link rel="canonical" href="http://crazyloong.icu/2023/11/15/Java9-17%E6%96%B0%E7%89%B9%E6%80%A7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java9-17新特性',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-15 23:48:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+
+preloader.initLoading()
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/05/27/gaLE37C6VHrpukK.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-instagram"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/11/15/hK5AdvNHIq6eERb.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Sin's Blog"><span class="site-name">Sin's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/pictures/"><i class="fa-fw fas fa-instagram"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java9-17新特性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-15T13:06:41.927Z" title="发表于 2023-11-15 21:06:41">2023-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-15T15:48:24.324Z" title="更新于 2023-11-15 23:48:24">2023-11-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java9-17新特性"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Java-9-新特性"><a href="#Java-9-新特性" class="headerlink" title="Java 9 新特性"></a>Java 9 新特性</h1><h2 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a>模块机制</h2><p><strong>注意：由于模块化开发颗粒度很小，引入依赖时还要将依赖引入模块，配置时很麻烦，所以实际开发中应用不会很广泛，我们只做了解</strong></p>
+<p>在我们之前的开发中，当我们导入一个 jar 包作为依赖时（包括 JDK 官方库），很多功能我们并不会用到，但是由于同一个依赖不可拆分，导致我们可能只用到其中一部分内容，却要引用一个完整的类库。实际上我们可以把用不到的类库排除掉，大大降低依赖库的规模。</p>
+<p>引入模块机制之前</p>
+<p><img src="https://s2.loli.net/2023/11/15/XmZ5f6dzEpN3vH1.png" alt="image-20231115212316398"></p>
+<p>引入模块机制之后</p>
+<p><img src="https://s2.loli.net/2023/11/15/IBJuYrFxZH8m1e6.png" alt="image-20231115212438693"></p>
+<p>模块可以由一个或者多个在一起的 Java 包组成，通过将这些包分出不同的模块，我们就可以按照模块的方式进行管理了。</p>
+<p>Java 9 模块的重要特征是在其工件（artifact）的根目录中包含了一个描述模块的 <strong>module-info.class</strong> 文件。工件的格式可以是传统的 JAR 文件或是 Java 9 新增的 JMOD 文件。这个文件由根目录中的源代码文件 <strong>module-info.java</strong> 编译而来，模块声明文件中可以包含的内容如下：</p>
+<ol>
+<li><p><strong>模块导出的包</strong>：使用 <strong>exports</strong> 可以声明模块对其他模块所导出的包。</p>
+<p>包中的 public 和 protected 类型，以及这些类型的 public 和 protected 成员可以被其他模块所访问。没有声明为导出的包相当于模块中的私有成员，不能被其他模块使用。</p>
+</li>
+<li><p><strong>模块的依赖关系</strong>：使用 <strong>requires</strong> 可以声明模块对其他模块的依赖关系。</p>
+</li>
+<li><p>使用 requires transitive 可以把一个模块依赖声明为传递的。传递的模块依赖可以被依赖当前模块的其他模块所读取。 如果一个模块所导出的类型的型构中包含了来自它所依赖的模块的类型，那么对该模块的依赖应该声明为传递的。</p>
+</li>
+<li><p><strong>服务的提供和使用</strong>：如果一个模块中包含了可以被 ServiceLocator 发现的服务接口的实现 ，需要使用 provides with 语句来声明具体的实现类 ；如果一个模块需要使用服务接口，可以使用 uses 语句来声明。</p>
+</li>
+</ol>
+<h3 id="Java9模块化结构规定"><a href="#Java9模块化结构规定" class="headerlink" title="Java9模块化结构规定"></a>Java9模块化结构规定</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line">   &lt;<span class="keyword">module</span> name&gt;/</span><br><span class="line">      <span class="keyword">module</span>-info.java</span><br><span class="line">      package1/</span><br><span class="line">         ...</span><br><span class="line">      package2/</span><br><span class="line">         ...</span><br></pre></td></tr></table></figure>
+
+<p>模块源代码存储在 src 目录下，每个模块有自己的目录，在这个目录下每个文件包含了特定的软件组件。</p>
+<h3 id="Java9模块化与反射"><a href="#Java9模块化与反射" class="headerlink" title="Java9模块化与反射"></a>Java9模块化与反射</h3><p><strong>Java9 模块化系统对反射机制产生了一些限制和改变：</strong></p>
+<ul>
+<li>反射机制只能访问已经声明的模块及其导出内容。这意味着反射机制无法访问未声明的类、接口和注解，以及模块内的非导出内容。</li>
+<li>反射机制可以通过<code>ModuleLayer</code>和<code>ModuleFinder</code>等API获取模块信息，并合理地限制模块之间的依赖关系。</li>
+<li>在最坏的情况下，反射机制可能需要在运行时动态加载模块，这可能会导致性能下降。</li>
+</ul>
+<h3 id="模块的四种类型"><a href="#模块的四种类型" class="headerlink" title="模块的四种类型"></a>模块的四种类型</h3><p><strong>系统模块：</strong>来自 JDK 和 JRE 的模块（官方提供的模块，比如我们上面用的），我们也可以直接使用java –list-modules命令来列出所有的模块，不同的模块会导出不同的包供我们使用。</p>
+<p><strong>应用程序模块：</strong>我们自己写的Java模块项目。</p>
+<p><strong>自动模块：</strong>可能有些库并不是 Java 9 以上的模块项目，这种时候就需要做兼容了，默认情况下是直接导出所有的包，可以访问所有其他模块提供的类。</p>
+<p><strong>未命名模块：</strong>我们自己创建的一个Java项目，如果没有创建module-info.java，那么会按照未命名模块进行处理，未命名模块同样可以访问所有其他模块提供的类，这样我们之前写的 Java 8代码才能正常地在 Java 9以及之后的版本下运行。不过，由于没有使用Java 9的模块新特性，未命名模块只能默认暴露给其他未命名的模块和自动模块，应用程序模块无法访问这些类（实际上就是传统 Java 8以下的编程模式）</p>
+<h2 id="JShell-交互式编程"><a href="#JShell-交互式编程" class="headerlink" title="JShell 交互式编程"></a>JShell 交互式编程</h2><p>Java 9为我们通过了一种交互式编程工具 JShell</p>
+<p>当我们配置完 java环境后，控制台输入 jshell 即可进入，与python差不多，可以使用<code>/help</code>查看帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jshell</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="接口中的private方法"><a href="#接口中的private方法" class="headerlink" title="接口中的private方法"></a>接口中的private方法</h2><p>在 Java 8中，接口中 的方法支持添加<code>default</code>关键字来添加默认实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是默认实现&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 Java 9中，接口再次得到强化，现在<strong>接口中可以存在私有方法</strong>了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;默认实现&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.inner();   <span class="comment">//接口中方法的默认实现可以直接调用接口中的私有方法</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">inner</span><span class="params">()</span> &#123;   <span class="comment">//声明一个私有方法,此方法只能被接口中的其他私有方法或是默认实现调用</span></span><br><span class="line">        System.out.println(<span class="string">&quot;我是私有方法！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="集合、Stream-和-Optional"><a href="#集合、Stream-和-Optional" class="headerlink" title="集合、Stream 和 Optional"></a>集合、Stream 和 Optional</h2><h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>在集合上，Java 9 增加 了 <code>List.of()</code>、<code>Set.of()</code>、<code>Map.of()</code> 和 <code>Map.ofEntries()</code>等工厂方法来创建不可变集合。我们用 map 测试：</p>
+<p>一般方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//要快速使用Map，需要先创建一个Map对象，然后再添加数据</span></span><br><span class="line">    Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//map可修改</span></span><br><span class="line">    map.put(<span class="string">&quot;胡桃&quot;</span>, <span class="number">16</span>);</span><br><span class="line">    map.put(<span class="string">&quot;纳西妲&quot;</span>, <span class="number">500</span>);</span><br><span class="line">	</span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Map&lt;String, Integer&gt; map = Map.of(<span class="string">&quot;胡桃&quot;</span>, <span class="number">16</span>, <span class="string">&quot;纳西妲&quot;</span>, <span class="number">500</span>);  <span class="comment">//至多一次加10个键值对</span></span><br><span class="line">	<span class="comment">//不可修改</span></span><br><span class="line">    System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><p>Stream 中增加了新的方法 <code>ofNullable</code>、<code>dropWhile</code>、<code>takeWhile</code> 和 <code>iterate</code>。</p>
+<p>Collectors 中增加了新的方法<code>flatMapping</code>。</p>
+<h4 id="ofNullable"><a href="#ofNullable" class="headerlink" title="ofNullable"></a>ofNullable</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Stream</span><br><span class="line">            .of(<span class="literal">null</span>)   <span class="comment">//如果传入null会报错</span></span><br><span class="line">            .forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">    Stream</span><br><span class="line">            .ofNullable(<span class="literal">null</span>) <span class="comment">//使用新增的ofNullable方法，这样就不会了，不过这样的话流里面就没东西了</span></span><br><span class="line">            .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="iterate"><a href="#iterate" class="headerlink" title="iterate"></a>iterate</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Stream.iterate(<span class="number">0</span>, i -&gt; i &lt; <span class="number">20</span>, i -&gt; i + <span class="number">1</span>)  <span class="comment">//快速生成一组0~19的int数据，中间可以添加一个断言，表示什么时候结束生成</span></span><br><span class="line">            .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="takeWhile"><a href="#takeWhile" class="headerlink" title="takeWhile"></a>takeWhile</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Stream</span><br><span class="line">            .iterate(<span class="number">0</span>, i -&gt; i + <span class="number">1</span>)</span><br><span class="line">            .limit(<span class="number">20</span>)</span><br><span class="line">            .takeWhile(i -&gt; i &lt; <span class="number">10</span>)   <span class="comment">//当i小于10时正常通过，一旦大于等于10直接截断</span></span><br><span class="line">            .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="dropWhile"><a href="#dropWhile" class="headerlink" title="dropWhile"></a>dropWhile</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Stream</span><br><span class="line">            .iterate(<span class="number">0</span>, i -&gt; i + <span class="number">1</span>)</span><br><span class="line">            .limit(<span class="number">20</span>)</span><br><span class="line">            .dropWhile(i -&gt; i &lt; <span class="number">10</span>)   <span class="comment">//和上面相反，上来就是截断状态，只有当满足条件时再开始通过</span></span><br><span class="line">            .forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="flatMapping"><a href="#flatMapping" class="headerlink" title="flatMapping"></a>flatMapping</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//先通过flatMapping把String映射成Integer流，再把所有的Integer收集到一个集合中</span></span><br><span class="line">    Set&lt;Integer&gt; collect = Stream.of(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;abc&quot;</span>)</span><br><span class="line">        .collect(Collectors.flatMapping(v -&gt; v.chars().boxed(),</span><br><span class="line">                                        Collectors.toSet()));</span><br><span class="line">    System.out.println(collect);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>Optional 类中新增了<code> ifPresentOrElse</code>、<code>or</code> 和 <code>stream</code> 等方法。</p>
+<h4 id="ifPresentOrElse"><a href="#ifPresentOrElse" class="headerlink" title="ifPresentOrElse"></a>ifPresentOrElse</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    Optional.ofNullable(str).ifPresentOrElse(s -&gt; &#123;  <span class="comment">//通过使用ifPresentOrElse，我们同时处理两种情况</span></span><br><span class="line">        System.out.println(<span class="string">&quot;被包装的元素为：&quot;</span>+s);     <span class="comment">//第一种情况和ifPresent是一样的</span></span><br><span class="line">    &#125;, () -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;被包装的元素为null&quot;</span>);   <span class="comment">//第二种情况是如果为null的情况</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="or"><a href="#or" class="headerlink" title="or"></a>or</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    Optional.ofNullable(str)</span><br><span class="line">      .or(() -&gt; Optional.of(<span class="string">&quot;AAA&quot;</span>))   <span class="comment">//如果当前被包装的类不是null，依然返回自己，但是如果是null，那就返回Supplier提供的另一个Optional包装</span></span><br><span class="line">      .ifPresent(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h4><p>直接将 Optional 转换为 Stream</p>
+<h2 id="其他小型变动"><a href="#其他小型变动" class="headerlink" title="其他小型变动"></a>其他小型变动</h2><h3 id="Try-with-resource"><a href="#Try-with-resource" class="headerlink" title="Try-with-resource"></a>Try-with-resource</h3><p>Try-with-resource语法现在不需要再完整的声明一个变量了，我们可以直接将现有的变量丢进去：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> Files.newInputStream(Paths.get(<span class="string">&quot;pom.xml&quot;</span>));</span><br><span class="line">    <span class="keyword">try</span> (inputStream) &#123;   <span class="comment">//单独丢进try中，效果是一样的</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</span><br><span class="line">            System.out.print((<span class="type">char</span>) inputStream.read());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="钻石运算符进行自动类型推断"><a href="#钻石运算符进行自动类型推断" class="headerlink" title="钻石运算符进行自动类型推断"></a>钻石运算符进行自动类型推断</h3><p>在 Java 8及之前，匿名内部类是没办法使用钻石运算符进行自动类型推断的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Test</span>&lt;T&gt; &#123;   <span class="comment">//这里我们写一个泛型类</span></span><br><span class="line">    <span class="keyword">public</span> T t;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">(T t)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.t = t;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> T <span class="title function_">test</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">//在低版本这样写是会直接报错的，因为匿名内部类不支持自动类型推断</span></span><br><span class="line">    Test&lt;String&gt; test = <span class="keyword">new</span> <span class="title class_">Test</span>&lt;&gt;(<span class="string">&quot;AAA&quot;</span>) &#123;   </span><br><span class="line">      	<span class="comment">//在Java 9之后，这样的写法可以编译通过了</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="I-x2F-O-流新特性"><a href="#I-x2F-O-流新特性" class="headerlink" title="I&#x2F;O 流新特性"></a>I&#x2F;O 流新特性</h3><p>类 java.io.InputStream 中增加了新的方法来读取和复制 InputStream 中包含的数据：</p>
+<ul>
+<li><code>readAllBytes</code>：读取 InputStream 中的所有剩余字节。</li>
+<li><code>readNBytes</code>： 从 InputStream 中读取指定数量的字节到数组中。</li>
+<li><code>transferTo</code>：读取 InputStream 中的全部字节并写入到指定的 OutputStream 中 。</li>
+</ul>
+<h1 id="Java-10-新特性"><a href="#Java-10-新特性" class="headerlink" title="Java 10 新特性"></a>Java 10 新特性</h1><h1 id="Java-11-新特性"><a href="#Java-11-新特性" class="headerlink" title="Java 11 新特性"></a>Java 11 新特性</h1><h1 id="Java-12-16-新特性"><a href="#Java-12-16-新特性" class="headerlink" title="Java 12-16 新特性"></a>Java 12-16 新特性</h1><h1 id="Java-17-新特性"><a href="#Java-17-新特性" class="headerlink" title="Java 17 新特性"></a>Java 17 新特性</h1></article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Java9-17新特性</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://crazyloong.icu/2023/11/15/Java9-17%E6%96%B0%E7%89%B9%E6%80%A7/">http://crazyloong.icu/2023/11/15/Java9-17新特性/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>crazyloong5</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2023-11-15</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-11-15</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E8%A8%80/">语言</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/11/15/hK5AdvNHIq6eERb.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/05/28/Effective-Java/" title="Effective Java"><img class="cover" src="https://s2.loli.net/2023/05/29/VnBzpJ6KOTlY8GW.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-28</div><div class="title">Effective Java</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/05/27/gaLE37C6VHrpukK.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">crazyloong5</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/crazyloong5"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/crazyloong5" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2603327054@11.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-9-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">Java 9 新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">模块机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java9%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BB%93%E6%9E%84%E8%A7%84%E5%AE%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">Java9模块化结构规定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java9%E6%A8%A1%E5%9D%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="toc-number">1.1.2.</span> <span class="toc-text">Java9模块化与反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">模块的四种类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JShell-%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">JShell 交互式编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84private%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">接口中的private方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E3%80%81Stream-%E5%92%8C-Optional"><span class="toc-number">1.4.</span> <span class="toc-text">集合、Stream 和 Optional</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">1.4.1.</span> <span class="toc-text">集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream"><span class="toc-number">1.4.2.</span> <span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ofNullable"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">ofNullable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iterate"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">iterate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#takeWhile"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">takeWhile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dropWhile"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">dropWhile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flatMapping"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">flatMapping</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional"><span class="toc-number">1.4.3.</span> <span class="toc-text">Optional</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ifPresentOrElse"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">ifPresentOrElse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">or</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#stream"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">stream</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B0%8F%E5%9E%8B%E5%8F%98%E5%8A%A8"><span class="toc-number">1.5.</span> <span class="toc-text">其他小型变动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Try-with-resource"><span class="toc-number">1.5.1.</span> <span class="toc-text">Try-with-resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%BB%E7%9F%B3%E8%BF%90%E7%AE%97%E7%AC%A6%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-number">1.5.2.</span> <span class="toc-text">钻石运算符进行自动类型推断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#I-x2F-O-%E6%B5%81%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">1.5.3.</span> <span class="toc-text">I&#x2F;O 流新特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-10-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">Java 10 新特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-11-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">Java 11 新特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-12-16-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">Java 12-16 新特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-17-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text">Java 17 新特性</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By crazyloong5</div><div class="footer_custom_text">Welcome!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async src="/js/title.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
