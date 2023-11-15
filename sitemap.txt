@@ -1,3 +1,4 @@
+http://crazyloong.icu/2023/10/11/Swift/
 http://crazyloong.icu/2023/11/14/MybatisPlus/
 http://crazyloong.icu/2023/11/12/SpringBoot/
 http://crazyloong.icu/2023/11/10/SpringMVC/
@@ -8,7 +9,6 @@ http://crazyloong.icu/2023/01/02/SQL/
 http://crazyloong.icu/2023/11/06/Mybatis/
 http://crazyloong.icu/2023/05/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 http://crazyloong.icu/2023/05/28/Effective-Java/
-http://crazyloong.icu/2023/10/11/Swift/
 http://crazyloong.icu/2023/05/27/MarkDown/
 http://crazyloong.icu/2023/10/12/Python/
 http://crazyloong.icu/pictures/index.html
