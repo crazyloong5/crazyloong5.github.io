@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://sinarcsinx.fun/posts/4a17b157.html</loc>
+    <loc>https://sinarcsinx.fun/posts/1113d944.html</loc>
+    
+    <lastmod>2024-12-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/gallery/index.html</loc>
     
     <lastmod>2024-12-08</lastmod>
     
@@ -20,34 +29,7 @@
   </url>
   
   <url>
-    <loc>https://sinarcsinx.fun/posts/4a17b158.html</loc>
-    
-    <lastmod>2024-12-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinarcsinx.fun/posts/4a17b156.html</loc>
-    
-    <lastmod>2024-12-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://sinarcsinx.fun/movies/index.html</loc>
-    
-    <lastmod>2024-12-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinarcsinx.fun/gallery/index.html</loc>
     
     <lastmod>2024-12-07</lastmod>
     
@@ -92,7 +74,7 @@
 
   
   <url>
-    <loc>https://sinarcsinx.fun/tags/test/</loc>
+    <loc>https://sinarcsinx.fun/tags/Java/</loc>
     <lastmod>2024-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
