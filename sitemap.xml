@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://sinarcsinx.fun/2024/12/09/hello-world/</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/essay/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/album/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/json/music.json</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/music/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/about/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/categories/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/tags/index.html</loc>
+    
+    <lastmod>2024-12-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/2022/10/15/hello-world%20copy/</loc>
+    
+    <lastmod>2022-10-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/2022/10/15/template/</loc>
+    
+    <lastmod>2022-10-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://sinarcsinx.fun/</loc>
+    <lastmod>2024-12-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://sinarcsinx.fun/tags/Java/</loc>
+    <lastmod>2024-12-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://sinarcsinx.fun/categories/%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-12-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
