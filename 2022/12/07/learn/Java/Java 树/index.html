@@ -1,0 +1,798 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Java 树 | Sins Blog</title><meta name="keywords" content="教程,Java"><meta name="author" content="sinarcsinx"><meta name="copyright" content="sinarcsinx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Java 树"><meta name="application-name" content="Java 树"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Java 树"><meta property="og:url" content="https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/index.html"><meta property="og:site_name" content="Sins Blog"><meta property="og:description" content="什么是树？    结构严格派  唯一父节点和复数子节点 结构中立派  有前驱和后继关系就行 结构自由派  能存放内容就行    类型严格派  是一种数据结构 二叉树是树 链表也是树 栈也是树   类型中立派  和编程有关就行 包也是树 语句肯定是树 标识符都是树   类型自由派  和程序员有关就行"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"><meta property="article:author" content="sinarcsinx"><meta property="article:tag" content="sinarcsinx,blog,Blog,博客,Sin的博客"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"><meta name="description" content="什么是树？    结构严格派  唯一父节点和复数子节点 结构中立派  有前驱和后继关系就行 结构自由派  能存放内容就行    类型严格派  是一种数据结构 二叉树是树 链表也是树 栈也是树   类型中立派  和编程有关就行 包也是树 语句肯定是树 标识符都是树   类型自由派  和程序员有关就行"><link rel="shortcut icon" href="https://picbed.sinarcsinx.fun/img/sin-planet.ico"><link rel="canonical" href="https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w","backTitle":"♪(^∇^*)"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://twikoo.sinarcsinx.fun/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔍 分享与热心帮助"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: sinarcsinx","link":"链接: ","source":"来源: Sins Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Sins Blog',
+  title: 'Java 树',
+  postAI: '',
+  pageFillDescription: '什么是树？, 二叉树：, 二叉树的遍历：, 顺序存储二叉树, 顺序存储二叉树的转换：, 线索化二叉树, 赫夫曼树, 生成赫夫曼树：, 赫夫曼编码：, 二叉排序树, 平衡二叉树, 线段树, 多路查找树, 2-3 树, B 树, B+ 树：, B* 树：, 前缀树, 图, 深度优先搜索 DFS, 广度优先搜索 BFS, 附录, F1 实现赫夫曼编码x2F解码, F2 实现平衡二叉树什么是树结构严格派唯一父节点和复数子节点结构中立派有前驱和后继关系就行结构自由派能存放内容就行类型严格派是一种数据结构二叉树是树链表也是树栈也是树类型中立派和编程有关就行包也是树语句肯定是树标识符都是树类型自由派和程序员有关就行当然是树衣服拉链也是树馄饨也是树二叉树树结构图二叉树树有多种每个节点最多只能有个子节点的一种树的形式称为二叉树二叉树的子节点分为左节点和右节点满二叉树二叉树的所有叶节点都在最后一层且节点总数是完全二叉树二叉树的所有叶节点都在最后一层和倒数第二层且最后一层的叶节点在左侧连续倒数第二层的叶节点在右侧连续二叉树的遍历前序遍历先输出父节点再遍历左子树和右子树自根节点起先输出当前节点再递归前序遍历左节点那之后递归前序遍历右节点节点类先输出父节点再遍历左子树再遍历右子树中序遍历先遍历左子树再输出父节点再遍历右子树后序遍历先遍历左子树再遍历右子树再输出父节点顺序存储二叉树从数据存储来看数组与树可以相互转换数组可以转换成树树也能转换成数组顺序存储二叉树通常只考虑完全二叉树将数组转换成树后将可以进行前序中序后序遍历顺序存储二叉树的例子该的顺序存储二叉树为顺序存储二叉树的转换数组下标为的元素放在根节点对于数组下标为的元素其左子节点的数组下标为右子节点的数组下标为父节点的数组下标为可以发现所有左节点都是奇数下标右节点都是偶数下标数组下标为的元素放在根节点按照前述方法创建每个元素节点并放在对应父节点下以上是一种显式的转换也可以直接将数组视为抽象的顺序存储二叉树如堆见数组排序和查找线索化二叉树含有各节点的二叉链表中有个空指针域利用这些空指针域存放指向节点在某种遍历次序下的前驱和后继节点的指针这种附加的指针称为线索加上了线索的二叉链表称为线索链表相应二叉树称为线索二叉树线索二叉树可分为前序线索二叉树中序线索二叉树后续线索二叉树线索化二叉树后那些左节点和右节点既可能指向自身的子树也可能指向自身的前驱后继节点因此需要添加一组标记以记录线索的种类这个遍历的场合不能再使用递归方式遍历而是改为线性方式遍历即可赫夫曼树给定个权值作为个叶节点构造一棵二叉树若该树的带权路径长度最小则称其为最优二叉树赫夫曼树哈夫曼树霍夫曼树节点的带权路径长度该节点的权节点路径长度树的带权路径长度所有的叶结点的带权路径长度之和赫夫曼树中一定是权值较大的节点距离根更近赫夫曼树的例子生成赫夫曼树对数据进行排序每个数据都可以创建一个节点取出权值最小的两颗二叉树合并为一棵新的二叉树该二叉树权值是两棵子树的权值之和将数据再次排序重复合并步骤直至剩余唯一的树即为赫夫曼树赫夫曼编码赫夫曼编码是一种编码方式是一种程序算法赫夫曼编码是赫夫曼树在电讯通信中的经典应用之一赫夫曼编码广泛应用于数据文件压缩其压缩率在间赫夫曼编码是可变字长编码的一种是老赫在年提出的编码方法称为最佳编码赫夫曼编码是无损处理方案由于赫夫曼编码是按字节处理数据因此可以处理所有文件编码方式有三种定长编码如码其每个字符占用长度为固定字节变长编码对字符进行统计按照各个字符出现的次数进行编码出现次数越多编码越小字符的编码不能是其他字符编码的前缀这样的编码叫做前缀编码消除二义性赫夫曼编码按照字符的出现次数构建赫夫曼树之后按照赫夫曼树结构给字符规定编码向左的路径记为向右记为这样得到的编码一定是前缀编码因为那些字符节点都是叶节点赫夫曼行啊赫夫曼之后用规定的编码将指定字符串转化为字节数组最后传递字符数组即可注意事项压缩已经过压缩处理的文件那个压缩率会变低如果一个文件中重复的数据很少缩效果也会不明显二叉排序树二叉排序树对于任何一个非叶节点其左节点小于等于当前节点右节点大于等于当前节点二叉排序树的例子二叉排序树删除节点删除叶节点的场合将那个父节点的对应连接置空即可删除有唯一子节点的节点场合让那个父节点的对应连接改为指向子树即可删除有两个子节点的节点的场合将该节点置为正无穷或负无穷之后维护该二叉排序树直到该节点成为叶节点时删除该节点即可平衡二叉树二叉排序树可能形成一些奇怪的形状如左子树全部为空这样就不能发挥树形结构的比较优势平衡二叉树树也叫平衡二叉搜索树非空时其任意节点左右两个子树的高度差不超过且左右子树也都是平衡二叉树平衡二叉树的实现方法有红黑树替罪羊树伸展树等创建一个新节点该节点的值等于根节点值使该新节点的左子树指向当前根节点的左子树使该节点的右子树指向当前根节点右子树的左子树使当前根节点的右子树的左子树指向该新节点使当前根节点的右子树成为新的根节点旧的根节点被废弃简单的说就是让根节点的右子树指向右子树的左子树而右子树的左子树指向根节点合理性在于根节点的右子树上的所有值都大于而的所有左子树的值以及所有左子树的值也一定小于值符合进行右旋转的条件右子树高度左子树高度时如果那个左子树的右子树高度高于其左子树高度需要先对左子树进行左旋转以此类推线段树线段树是一棵二叉树其每个节点表示一个闭区间父节点的区间内包含所有子节点的区间对于每个非叶节点将其区间平均划分成两个子区间左节点指向其中较小区间右节点指向那个较大区间换言之对于非叶节点其左子节点是右子节点是对于每个叶节点其区间仅包含一个元素即其区间的左界等于右界线段树的例子在区间中记录的样子线段树是近似的完全二叉树有时线段树的节点是随着线段树的更新逐渐建立的此时线段树不处于完全二叉树的状态线段树的更新标记区间时按照广度优先搜索的思想从根节点开始遍历区间比如添加区间时如果一个节点的区间内所有元素都被标记则标记这个节点对于区间如果且则标记该节点如果一个节点的区间内部分元素被标记则继续遍历其左右节点对于区间如果则需要遍历其左节点如果则需要遍历其右节点标记节点时只需在该节点添加懒标记而不必对所有子节点进行标记懒标记使用懒标记可以只更新到满足条件的区间而不必对所有子区间一一更新此后再次遍历到该节点时再对懒标记进行下推上述例子中记录区间时仅更新了这些节点以节点为例该区间上被添加了懒标记代表该区间及所有子区间都被记录了一次下次遍历到这个节点时懒标记被下推给子节点线段树的查询一个区间的元素和等于其子区间各自元素和的合计值一个区间中的最大值等于其子区间各自最大值中的较大值多路查找树二叉树虽然效率较高但需要加载到内存中节点过多时就可能出现问题如需要进行多次操作导致构建速度慢造成二叉树高度很大降低操作速度每个节点可以拥有更多数据项和更多子节点的树就是多叉树多叉树通过重新组织节点能减少树的高度能对二叉树进行优化节点的度节点的子节点数量树的度阶树中所有节点的度的最大值树树是最简单的树结构其具有如下特点所有叶节点都在同一层节点包含不超过个值有两个子节点的节点叫二节点二节点要么没有子节点要么有两个子节点有三个子节点的节点叫三节点三节点要么没有子节点要么有三个子节点树是由二节点和三节点构成的树其节点仍遵循二叉排序树的规则对于二节点其左子树的值需小于当前节点右子树的值需大于当前节点对于三节点其左子树的值小于当前节点的最小值中子树的值需介于当前节点的两个值之间右子树的值大于当前节点的最大值树的例子插入节点时如果不能满足条件即需要拆分拆分时先拆上层上层满时才拆本层拆分后仍要满足规则树树树与树都是树的种类树具有如下特点树树我啊所有叶节点都在同一层呢搜索时从根节点起对当前节点内的关键字有序进行二分查找命中则结束否则进入那个对应范围的子节点那个命中可能发生在叶节点也可能在非叶节点如果当前节点为空则表示没有找到树的关键字集合分布在整棵树中非叶节点和叶节点都存放数据树的搜索性能等价于在关键字全集内进行二分查找树树是树的变体使用链表存储数据时查找数据缓慢因此将链表数据分为若干段将每段的索引节点保存为树数据链表树具有如下特点树的关键字都出现在叶节点的链表中链表中数据是有序的非叶节点只相当于叶节点的索引稀疏索引叶节点相当于是存储数据的数据层稠密索引树的命中只可能发生在叶节点树的搜索性能也等价于在关键字全集内进行二分查找树更适合文件索引系统树树是树的变体其在非根非叶节点间加入了兄弟指针数据链表索引相连树具有以下特点树定义了非叶子节点关键字个数至少为其块的最低使用率为而树最低使用率为树分配新节点的概率更低空间使用率更高前缀树前缀树字典树单词查找树键树是一种多路查找树利用元素的公共前缀来减少查询时间下面是一个存储了数个单词的前缀树前缀树具有如下特点根节点不包含字符除根节点外每一个节点包含一个字符节点的路径即为一条存储字符串特别的根节点表示空字符串每个节点持有一个计数器计算该节点处存储的字符串数量所有的子节点都与父节点具有相同前缀在前缀树中查询字符串的时间复杂度为其中为字符串长度实现前缀树节点类根节点构造器添加字符串查找字符串图线性表局限于一个直接前驱和一个直接后继的关系树可能有数个直接后继但只能有一个直接前驱父节点当需要表示多对多关系时就需要图图是一种数据结构每个节点可以有零个或多个相邻元素两个节点间的连接称为边节点也被称为顶点图的分类按照顶点间的连接有无方向分为有向图无向图按照是否带权分为带权图网非带权图按照表示方式分为二维数组表示邻接矩阵链表表示邻接表一组连接的节点邻接矩阵其中表示节点与节点相连邻接矩阵为每个顶点都分配了个边的空间这样造成了空间的损失邻接表邻接表为每个节点创建一个链表链表中是与其相连的节点邻接表由数组链表组成邻接表只关心存在的边不关心不存在的边因此没有空间浪费深度优先搜索深度优先搜索其策略是优先纵向挖掘深入而不是对一个节点的所有节点先进行横向访问从初始访问节点出发首先访问其第一个相邻节点之后从那个访问节点出发递归访问第一个相邻节点直到一个节点的路径完全访问结束后才访问第二个节点访问初始节点标记其为已访问从的第一个相邻节点起以递归方式对其进行深度优先搜索当前节点没有可访问的相邻节点时就完成了对一条路径访问此时才返回上一级继续搜索下一节点广度优先搜索广度优先搜索其策略是优先横向访问所有相邻节点而不是对一条路径进行纵向挖掘从初始访问节点出发记录所有相邻节点之后访问先前记录节点并记录所有相邻节点直到没有能访问的节点为止就完成了对所有连接节点的搜索记录初始节点访问上一次记录的节点将其标记为已访问将那些节点的所有可访问的相邻节点记录重复上一步直到没有可访问的节点时就完成了对所有连接节点的访问附录实现赫夫曼编码解码压缩数据包压缩信息主体赫夫曼表补位数将数据压缩返回一个压缩包在压缩包内记录编码表在压缩包内记录压缩后数据也会记录补位数根据要压缩的数据计算那个赫夫曼表记录每个字符出现的次数生成赫夫曼树根据那个赫夫曼树生成赫夫曼编码特别地只有唯一字符从场合这样处理根据赫夫曼表将数据压缩得到压缩后的字符串压缩后的数据放在数组中记录那个补位数最后一位可能有补位那个场合让有效数字在最左侧该方法能遍历赫夫曼树以获取赫夫曼表是叶节点的场合记录这个编码值向左路径记为向右路径记为解压压缩包获取那个压缩数据的编码遍历到最后要处理那个补位将编码表转化为解码表按照解码表把压缩编码转化为未解压编码将数组转化为数组节点类是构建赫夫曼树时用到的类代表的值出现的次数实现平衡二叉树根节点添加一个值添加一个节点要添加的值确定其插入位置将其插入到指定位置维护该平衡二叉树维护平衡二叉树待检查节点时需要旋转需要左旋否则右旋对该节点进行旋转待旋转节点的场合右旋否则左旋一个展示树的方法供用共个节点一个清点树中节点的方法值左节点右节点父节点该节点是左节点是右节点左子树高度右子树高度该节点树高度',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-07 19:21:50',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Sins Blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://picbed.sinarcsinx.fun/markdown/avator.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://sinarcsinx.fun/" title="博客"><img class="back-menu-item-icon" src="https://picbed.sinarcsinx.fun/img/sin-planet.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">常用网站</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.baidu.com/" title="百度"><img class="back-menu-item-icon" src="https://picbed.sinarcsinx.fun/img/baidu.png" alt="百度"/><span class="back-menu-item-text">百度</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Sins Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?type=:playlist&amp;id=12975125061&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/wepay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://picbed.sinarcsinx.fun/img/wepay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://picbed.sinarcsinx.fun/img/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 1.05rem; color: rgb(44, 73, 66);">Java<sup>20</sup></a><a href="/tags/MarkDown/" style="font-size: 1.05rem; color: rgb(98, 139, 114);">MarkDown<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem; color: rgb(160, 175, 37);">SQL<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem; color: rgb(84, 147, 76);">教程<sup>22</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url">学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>教程</span></a><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Java 树</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-12-07T07:10:50.000Z" title="发表于 2022-12-07 15:10:50">2022-12-07</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2022-12-07T11:21:50.000Z" title="更新于 2022-12-07 19:21:50">2022-12-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为宁波"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>宁波</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/"><header><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url">学习</a><a href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">教程</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><h1 id="CrawlerTitle" itemprop="name headline">Java 树</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">sinarcsinx</span><time itemprop="dateCreated datePublished" datetime="2022-12-07T07:10:50.000Z" title="发表于 2022-12-07 15:10:50">2022-12-07</time><time itemprop="dateCreated datePublished" datetime="2022-12-07T11:21:50.000Z" title="更新于 2022-12-07 19:21:50">2022-12-07</time></header><h4 id="什么是树？"><a href="#什么是树？" class="headerlink" title="什么是树？"></a>什么是树？</h4><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>结构严格派</strong>  唯一父节点和复数子节点</th>
+<th><strong>结构中立派</strong>  有前驱和后继关系就行</th>
+<th><strong>结构自由派</strong>  能存放内容就行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>类型严格派</strong>  是一种数据结构</td>
+<td>二叉树是树</td>
+<td>链表也是树</td>
+<td>栈也是树</td>
+</tr>
+<tr>
+<td><strong>类型中立派</strong>  和编程有关就行</td>
+<td>包也是树</td>
+<td>语句肯定是树</td>
+<td>标识符都是树</td>
+</tr>
+<tr>
+<td><strong>类型自由派</strong>  和程序员有关就行</td>
+<td>wifi 当然是树</td>
+<td>衣服拉链也是树</td>
+<td>馄饨也是树！</td>
+</tr>
+</tbody></table>
+<h2 id="二叉树："><a href="#二叉树：" class="headerlink" title="二叉树："></a>二叉树：</h2><p><a target="_blank" rel="noopener" href="https://i-melody.github.io/img/Java_InputImage/%E6%A0%91%E7%BB%93%E6%9E%84%E5%9B%BE_14.1.png"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://i-melody.github.io/img/Java_InputImage/%E6%A0%91%E7%BB%93%E6%9E%84%E5%9B%BE_14.1.png"></a></p>
+<p><em>（树结构图_14.1）</em></p>
+<ul>
+<li><p><strong>二叉树：</strong>树有多种。每个节点最多只能有 2 个子节点的一种树的形式称为二叉树</p>
+<p>二叉树的子节点分为 <strong>左节点</strong> 和 <strong>右节点</strong>。</p>
+</li>
+<li><p><strong>满二叉树：</strong>二叉树的 所有叶节点 都在 最后一层，且节点总数是 2n - 1</p>
+</li>
+<li><p><strong>完全二叉树：</strong>二叉树的 所有叶节点 都在 最后一层 和 倒数第二层，且最后一层的叶节点在左侧连续、倒数第二层的叶节点在右侧连续</p>
+</li>
+</ul>
+<h4 id="二叉树的遍历："><a href="#二叉树的遍历：" class="headerlink" title="二叉树的遍历："></a>二叉树的遍历：</h4><ul>
+<li><p><strong>前序遍历：</strong>先输出父节点，再遍历左子树和右子树。</p>
+<p>自根节点起。先输出当前节点。再递归前序遍历左节点。那之后，递归前序遍历右节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static class Node &#123;					// 节点类</span><br><span class="line">    int val;</span><br><span class="line">    Node left;</span><br><span class="line">    Node right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String traverse(Node root) &#123;</span><br><span class="line">    StringBuilder sb = new StringBuilder();</span><br><span class="line">    traverse(root, sb);</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void traverse(Node root, StringBuilder sb) &#123;</span><br><span class="line">    if (root == null) return;</span><br><span class="line">    sb.append(root.val).append(&quot; &quot;);		// 先输出父节点</span><br><span class="line">    traverse(root.left, sb);				// 再遍历左子树</span><br><span class="line">    traverse(root.right, sb);				// 再遍历右子树</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>中序遍历：</strong>先遍历左子树，再输出父节点，再遍历右子树。</p>
+</li>
+<li><p><strong>后序遍历：</strong>先遍历左子树，再遍历右子树，再输出父节点。</p>
+</li>
+</ul>
+<h3 id="顺序存储二叉树"><a href="#顺序存储二叉树" class="headerlink" title="顺序存储二叉树"></a>顺序存储二叉树</h3><p>从数据存储来看，数组与树可以相互转换。数组可以转换成树，树也能转换成数组。</p>
+<p>顺序存储二叉树通常只考虑完全二叉树。将数组转换成树后，将可以进行前序、中序、后序遍历。</p>
+<p><strong>顺序存储二叉树的例子：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int[] array = &#123;0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>该 array 的顺序存储二叉树为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(0)---B(1)---C(3)</span><br><span class="line">A---a(2)---aa(5)</span><br><span class="line">B---D(4)</span><br><span class="line">a---ab(6)</span><br><span class="line">C---E(7)</span><br><span class="line">C---F(8)</span><br><span class="line">D---G(9)</span><br><span class="line">D---H(10)</span><br></pre></td></tr></table></figure>
+
+<h4 id="顺序存储二叉树的转换："><a href="#顺序存储二叉树的转换：" class="headerlink" title="顺序存储二叉树的转换："></a>顺序存储二叉树的转换：</h4><ul>
+<li><p>数组下标为 0 的元素放在根节点。</p>
+</li>
+<li><p>对于数组下标为 n 的元素，其左子节点的数组下标为 2 × n + 1、右子节点的数组下标为 2 × n + 2、父节点的数组下标为 (n - 1) &#x2F; 2</p>
+<p>可以发现，所有左节点都是奇数下标，右节点都是偶数下标</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static Node toTree(int[] array) &#123;</span><br><span class="line">    Node root = new Node(array[0]);</span><br><span class="line">    List&lt;Node&gt; list = new ArrayList&lt;Node&gt;();</span><br><span class="line">    list.add(root);									// 数组下标为 0 的元素放在根节点。</span><br><span class="line">    for (int i = 1; i &lt; array.length; i++) &#123;		// 按照前述方法，创建每个元素节点，并放在对应父节点下</span><br><span class="line">        Node temp = new Node(array[i]);</span><br><span class="line">        list.add(temp);</span><br><span class="line">        Node parent = list.get((i - 1) / 2);</span><br><span class="line">        if (i % 2 == 0) parent.right = temp;</span><br><span class="line">        else parent.left = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static class Node &#123;</span><br><span class="line">    public int val;</span><br><span class="line">    public Node left;</span><br><span class="line">    public Node right;</span><br><span class="line">    </span><br><span class="line">    public Node(int val) &#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上是一种显式的转换。也可以直接将数组视为抽象的顺序存储二叉树。</p>
+<p>如：堆。**<em>——见 [[5 数组、排序和查找]]</em>**</p>
+<h3 id="线索化二叉树"><a href="#线索化二叉树" class="headerlink" title="线索化二叉树"></a>线索化二叉树</h3><p>含有 n 各节点的二叉链表中，有 n + 1 个空指针域。利用这些空指针域，存放指向节点在某种遍历次序下的前驱和后继节点的指针，这种附加的指针称为 <strong>线索</strong>。加上了线索的二叉链表称为 <strong>线索链表</strong>，相应二叉树称为 <strong>线索二叉树</strong>。</p>
+<p>线索二叉树可分为：前序线索二叉树、中序线索二叉树、后续线索二叉树。</p>
+<p>线索化二叉树后，那些左节点和右节点既可能指向 自身的子树，也可能指向自身的 前驱 &#x2F; 后继 节点。因此，需要添加一组标记，以记录线索的种类。</p>
+<p>这个遍历的场合，不能再使用递归方式遍历，而是改为线性方式遍历即可。</p>
+<h3 id="赫夫曼树"><a href="#赫夫曼树" class="headerlink" title="赫夫曼树"></a>赫夫曼树</h3><p>给定 n 个权值作为 n 个叶节点，构造一棵二叉树。若该树的带权路径长度（WPL）最小，则称其为 <strong>最优二叉树</strong>（赫夫曼树、哈夫曼树、霍夫曼树）</p>
+<ul>
+<li><p>节点的带权路径长度：该节点的权 × 节点路径长度</p>
+</li>
+<li><p>树的带权路径长度：所有的叶结点的带权路径长度之和</p>
+<p>赫夫曼树中，一定是权值较大的节点距离根更近。</p>
+</li>
+</ul>
+<p><strong>赫夫曼树的例子：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(NaN)---B(NaN)---C(14)</span><br><span class="line">B---b(NaN)---c(5)</span><br><span class="line">b---D(NaN)---E(1)</span><br><span class="line">D---F(2)</span><br><span class="line">A---a(NaN)---aa(16)</span><br><span class="line">a---ab(20)</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成赫夫曼树："><a href="#生成赫夫曼树：" class="headerlink" title="生成赫夫曼树："></a>生成赫夫曼树：</h4><ol>
+<li>对数据进行排序。每个数据都可以创建一个节点</li>
+<li>取出权值最小的两颗二叉树，合并为一棵新的二叉树。该二叉树权值是两棵子树的权值之和</li>
+<li>将数据再次排序，重复合并步骤，直至剩余唯一的树，即为赫夫曼树</li>
+</ol>
+<h4 id="赫夫曼编码："><a href="#赫夫曼编码：" class="headerlink" title="赫夫曼编码："></a>赫夫曼编码：</h4><blockquote>
+<p>赫夫曼编码是一种编码方式，是一种程序算法。赫夫曼编码是赫夫曼树在电讯通信中的经典应用之一。</p>
+<p>赫夫曼编码广泛应用于数据文件压缩，其压缩率在 20% ~ 90% 间</p>
+<p>赫夫曼编码是可变字长编码的一种。是老赫在 1952 年提出的编码方法，称为 “最佳编码”</p>
+<p>赫夫曼编码是无损处理方案。由于赫夫曼编码是按字节处理数据，因此可以处理所有文件</p>
+</blockquote>
+<p>编码方式有三种：</p>
+<ul>
+<li><p><strong>定长编码：</strong></p>
+<p>如 ASCII 码，其每个字符占用长度为固定 8 字节</p>
+</li>
+<li><p><strong>变长编码：</strong></p>
+<p>对字符进行统计，按照各个字符出现的次数进行编码。出现次数越多，编码越小。</p>
+<p>字符的编码不能是其他字符编码的前缀，这样的编码叫做前缀编码（消除二义性）。</p>
+</li>
+<li><p><strong>赫夫曼编码：</strong></p>
+<p>按照字符的出现次数，构建赫夫曼树。之后，按照赫夫曼树结构，给字符规定编码。向左的路径记为 0，向右记为 1。</p>
+<p>这样得到的编码，一定是前缀编码。因为那些字符节点都是叶节点。赫夫曼行啊赫夫曼！</p>
+<p>之后，用规定的编码将指定字符串转化为字节数组。最后，传递字符数组即可。</p>
+</li>
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>压缩已经过压缩处理的文件，那个压缩率会变低</li>
+<li>如果一个文件中重复的数据很少，缩效果也会不明显</li>
+</ul>
+<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><p>二叉排序树（BST，Binary Sort Tree）：对于任何一个非叶节点，其左节点小于等于当前节点，右节点大于等于当前节点</p>
+<p><strong>二叉排序树的例子：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(10)---B(8)</span><br><span class="line">B---D(4)---c(2)---d(1)</span><br><span class="line">D---b(6)</span><br><span class="line">B---E(9)</span><br><span class="line">A---C(15)---e(12)</span><br><span class="line">C---ee(23)</span><br></pre></td></tr></table></figure>
+
+<p><strong>二叉排序树删除节点：</strong></p>
+<ul>
+<li><p>删除叶节点的场合，将那个父节点的对应连接置空即可。</p>
+</li>
+<li><p>删除有唯一子节点的节点场合，让那个父节点的对应连接改为指向子树即可。</p>
+</li>
+<li><p>删除有两个子节点的节点的场合，将该节点置为正无穷或负无穷。</p>
+<p>之后维护该二叉排序树，直到该节点成为叶节点时，删除该节点即可。</p>
+</li>
+</ul>
+<h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><blockquote>
+<p>二叉排序树可能形成一些奇怪的形状（如左子树全部为空），这样就不能发挥树形结构的比较优势。</p>
+</blockquote>
+<p>平衡二叉树（AVL 树）：也叫平衡二叉搜索树。非空时，其任意节点左右两个子树的高度差不超过 1，且左右子树也都是平衡二叉树。</p>
+<p>平衡二叉树的实现方法有：红黑树、AVL、替罪羊树、Treap、伸展树等</p>
+<ul>
+<li>创建一个新节点。该节点的值等于根节点值</li>
+<li>使该新节点的左子树指向当前根节点的左子树。使该节点的右子树指向当前根节点右子树的左子树</li>
+<li>使当前根节点的右子树的左子树指向该新节点</li>
+<li>使当前根节点的右子树成为新的根节点。旧的根节点被废弃</li>
+</ul>
+<p>简单的说，就是让根节点的右子树指向右子树的左子树。而右子树的左子树指向根节点。</p>
+<p>合理性在于，根节点（root）的右子树（right）上的所有值都大于 root；而 right 的所有左子树的值，以及 root 所有左子树的值也一定小于 right 值</p>
+<p>符合进行右旋转的条件（右子树高度 &gt; 左子树高度 + 1）时，如果那个左子树的右子树高度高于其左子树高度，需要先对左子树进行左旋转。以此类推。</p>
+<h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><p>线段树（Segment Tree）是一棵二叉树。其每个节点表示一个闭区间，父节点的区间内包含所有子节点的区间。</p>
+<ul>
+<li><p>对于每个非叶节点，将其区间平均划分成两个子区间。左节点指向其中较小区间，右节点指向那个较大区间</p>
+<p>换言之，对于非叶节点 [L, R]，其左子节点是 [L, (L + R) &#x2F; 2]，右子节点是 [((L + R) &#x2F; 2) + 1, R]</p>
+</li>
+<li><p>对于每个叶节点，其区间仅包含一个元素。即，其区间的左界等于右界。</p>
+</li>
+</ul>
+<p><strong>线段树的例子：</strong></p>
+<p>在区间 [1, 9] 中，记录 [2, 9] 的样子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">Root(&amp;#91&amp;#49,9&amp;#93)</span><br><span class="line"></span><br><span class="line">Root---L(&amp;#91&amp;#49,5&amp;#93)</span><br><span class="line">style R fill: #BFFFFC</span><br><span class="line">Root---R(&amp;#91&amp;#54,9&amp;#93)</span><br><span class="line"></span><br><span class="line">L---LL(&amp;#91&amp;#49,3&amp;#93)</span><br><span class="line">style LR fill: #BFFFFC</span><br><span class="line">L---LR(&amp;#91&amp;#52,5&amp;#93)</span><br><span class="line">R---RL(&amp;#91&amp;#54,7&amp;#93)</span><br><span class="line">R---RR(&amp;#91&amp;#56,9&amp;#93)</span><br><span class="line"></span><br><span class="line">LL---LLL(&amp;#91&amp;#49,2&amp;#93)</span><br><span class="line">style LLR fill: #BFFFFC</span><br><span class="line">LL---LLR(&amp;#91&amp;#51,3&amp;#93)</span><br><span class="line">LR---LRL(&amp;#91&amp;#52,4&amp;#93)</span><br><span class="line">LR---LRR(&amp;#91&amp;#53,5&amp;#93)</span><br><span class="line">RL---RLL(&amp;#91&amp;#54,6&amp;#93)</span><br><span class="line">RL---RLR(&amp;#91&amp;#55,7&amp;#93)</span><br><span class="line">RR---RRL(&amp;#91&amp;#56,8&amp;#93)</span><br><span class="line">RR---RRR(&amp;#91&amp;#57,9&amp;#93)</span><br><span class="line"></span><br><span class="line">LLL---LLLL(&amp;#91&amp;#49,1&amp;#93)</span><br><span class="line">style LLLR fill: #BFFFFC</span><br><span class="line">LLL---LLLR(&amp;#91&amp;#50,2&amp;#93)</span><br></pre></td></tr></table></figure>
+
+<p>线段树是近似的完全二叉树。有时，线段树的节点是随着线段树的更新逐渐建立的，此时线段树不处于完全二叉树的状态。</p>
+<p><strong>线段树的更新：</strong></p>
+<p>标记区间时，按照 <strong>广度优先搜索</strong> 的思想，从根节点开始遍历区间。</p>
+<p>比如，添加区间 [START, END] 时：</p>
+<ul>
+<li><p>如果一个节点的区间内所有元素都被标记，则标记这个节点</p>
+<p>对于区间 [L, R]，如果 L &gt;&#x3D; STRAT 且 R &lt;&#x3D; END，则标记该节点</p>
+</li>
+<li><p>如果一个节点的区间内部分元素被标记，则继续遍历其左右节点</p>
+<p>对于区间 [L, R]，MID &#x3D; (L + R) &#x2F; 2</p>
+<p>如果 MID &gt;&#x3D; L，则需要遍历其左节点。如果 MID &lt; R，则需要遍历其右节点</p>
+</li>
+</ul>
+<p>标记节点时，只需在该节点添加懒标记，而不必对所有子节点进行标记。</p>
+<p><strong>懒标记：</strong></p>
+<p>使用懒标记，可以只更新到满足条件的区间，而不必对所有子区间一一更新。此后再次遍历到该节点时，再对懒标记进行下推</p>
+<p>上述例子中，记录区间 [2, 7] 时，仅更新了 [2, 2]、[3, 3]、[4, 5]、[6, 9] 这些节点。</p>
+<p>以节点 [6, 9] 为例，该区间上被添加了懒标记，代表该区间及所有子区间都被记录了一次。下次遍历到这个节点时，懒标记被下推给子节点 [6, 7]、[8, 9]</p>
+<p><strong>线段树的查询：</strong></p>
+<p>一个区间的元素和，等于 <em>其子区间各自元素和</em> 的合计值</p>
+<p>一个区间中的最大值，等于 <em>其子区间各自最大值</em> 中的较大值</p>
+<h2 id="多路查找树"><a href="#多路查找树" class="headerlink" title="多路查找树"></a>多路查找树</h2><blockquote>
+<p>二叉树虽然效率较高，但需要加载到内存中。节点过多时就可能出现问题。</p>
+<p>如：需要进行多次 I &#x2F; O 操作，导致构建速度慢；造成二叉树高度很大，降低操作速度。</p>
+</blockquote>
+<p>每个节点可以拥有更多数据项和更多子节点的树，就是多叉树（multiway tree）。</p>
+<p>多叉树通过重新组织节点，能减少树的高度，能对二叉树进行优化。</p>
+<ul>
+<li>节点的度：节点的子节点数量</li>
+<li>树的度 &#x2F; 阶：树中所有节点的度的最大值</li>
+</ul>
+<h3 id="2-3-树"><a href="#2-3-树" class="headerlink" title="2-3 树"></a>2-3 树</h3><p>2-3 树是最简单的 B 树结构。其具有如下特点：</p>
+<ul>
+<li><p>所有叶节点都在同一层。节点包含不超过 2 个值。</p>
+</li>
+<li><p>有两个子节点的节点叫 <strong>二节点</strong>。二节点要么没有子节点，要么有两个子节点。</p>
+<p>有三个子节点的节点叫 <strong>三节点</strong>。三节点要么没有子节点，要么有三个子节点。</p>
+</li>
+<li><p>2-3 树是由 二节点 和 三节点 构成的树。其节点仍遵循二叉排序树的规则。</p>
+<p>对于二节点：其左子树的值需小于当前节点、右子树的值需大于当前节点</p>
+<p>对于三节点：其左子树的值小于当前节点的最小值，中子树的值需介于当前节点的两个值之间，右子树的值大于当前节点的最大值</p>
+</li>
+</ul>
+<p><strong>2-3 树的例子：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(10)---B(6)</span><br><span class="line">B---D(1, 3)</span><br><span class="line">B---E(7)</span><br><span class="line">A---C(15, 20)</span><br><span class="line">C---F(11, 12)</span><br><span class="line">C---G(19)</span><br><span class="line">C---H(22, 32)</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>插入节点时，如果不能满足条件，即需要拆分。</p>
+<p>拆分时先拆上层。上层满时，才拆本层。拆分后仍要满足规则</p>
+</li>
+</ul>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B 树"></a>B 树</h3><p>B 树（b-tree，balance tree）。2-3 树与 2-3-4 树都是 B 树的种类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">ROOT(30, 60&lt;br/&gt;P1 - P2 - P3)</span><br><span class="line">ROOT---R1(10, 20&lt;br/&gt;P1 - P2 - P3)</span><br><span class="line">ROOT---R2(40, 50&lt;br/&gt;. - P2 - P3)</span><br><span class="line">ROOT---R3(70, 80&lt;br/&gt;P1 - P2 - P3)</span><br><span class="line">R1---R11(3, 6)</span><br><span class="line">R1---R12(12, 13)</span><br><span class="line">R1---R13(23, 24)</span><br><span class="line">R2---R21( )</span><br><span class="line">R2---R22(41, 48)</span><br><span class="line">R2---R23(55, 57)</span><br><span class="line">R3---R31(61, 62)</span><br><span class="line">R3---R32(73, 74)</span><br><span class="line">R3---R33(84, 86)</span><br></pre></td></tr></table></figure>
+
+<p>B 树具有如下特点：</p>
+<ul>
+<li><p>树树我啊，所有叶节点都在同一层呢。</p>
+</li>
+<li><p>搜索时，从根节点起，对当前节点内的关键字（有序）进行二分查找。</p>
+<p>命中则结束。否则，进入那个对应范围的子节点。那个命中可能发生在叶节点，也可能在非叶节点。</p>
+<p>如果当前节点为空，则表示没有找到。</p>
+</li>
+<li><p>B 树的关键字集合分布在整棵树中，非叶节点和叶节点都存放数据</p>
+</li>
+<li><p>B 树的搜索性能等价于在关键字全集内进行二分查找</p>
+</li>
+</ul>
+<h4 id="B-树："><a href="#B-树：" class="headerlink" title="B+ 树："></a>B+ 树：</h4><p>B+ 树是 B 树的变体。</p>
+<p>使用链表存储数据时，查找数据缓慢。因此将链表数据分为若干段，将每段的索引节点保存为树。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">ROOT(0, 32, 61&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R1(0, 12, 23&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R2(32, 40, 52&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R3(61, 73, 84&lt;br/&gt;A - B - C)</span><br><span class="line">R1---R11(0&lt;br/&gt;4&lt;br/&gt;9)</span><br><span class="line">R1---R12(12&lt;br/&gt;13&lt;br/&gt;17)</span><br><span class="line">R1---R13(23&lt;br/&gt;24&lt;br/&gt;25)</span><br><span class="line">R2---R21(32&lt;br/&gt;38&lt;br/&gt;39)</span><br><span class="line">R2---R22(40&lt;br/&gt;41&lt;br/&gt;48)</span><br><span class="line">R2---R23(52&lt;br/&gt;55&lt;br/&gt;57)</span><br><span class="line">R3---R31(61&lt;br/&gt;62&lt;br/&gt;66)</span><br><span class="line">R3---R32(73&lt;br/&gt;74&lt;br/&gt;79)</span><br><span class="line">R3---R33(84&lt;br/&gt;86&lt;br/&gt;87)</span><br><span class="line">subgraph 数据链表</span><br><span class="line">R11</span><br><span class="line">R12</span><br><span class="line">R13</span><br><span class="line">R21</span><br><span class="line">R22</span><br><span class="line">R23</span><br><span class="line">R31</span><br><span class="line">R32</span><br><span class="line">R33</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>B+ 树具有如下特点：</p>
+<ul>
+<li><p>B+ 树的关键字都出现在叶节点的链表中，链表中数据是有序的。</p>
+<p>非叶节点只相当于叶节点的索引（稀疏索引），叶节点相当于是存储数据的数据层（稠密索引）。</p>
+</li>
+<li><p>B+ 树的命中只可能发生在叶节点。</p>
+</li>
+<li><p>B+ 树的搜索性能也等价于在关键字全集内进行二分查找</p>
+</li>
+<li><p>B+ 树更适合文件索引系统</p>
+</li>
+</ul>
+<h4 id="B-树：-1"><a href="#B-树：-1" class="headerlink" title="B* 树："></a>B* 树：</h4><p>B* 树是 B+ 树的变体，其在非根、非叶节点间加入了兄弟指针。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">ROOT(0, 32, 61&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R1(0, 12, 23&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R2(32, 40, 52&lt;br/&gt;A - B - C)</span><br><span class="line">ROOT---R3(61, 73, 84&lt;br/&gt;A - B - C)</span><br><span class="line">R1---R11(0&lt;br/&gt;4&lt;br/&gt;9)</span><br><span class="line">R1---R12(12&lt;br/&gt;13&lt;br/&gt;17)</span><br><span class="line">R1---R13(23&lt;br/&gt;24&lt;br/&gt;25)</span><br><span class="line">R2---R21(32&lt;br/&gt;38&lt;br/&gt;39)</span><br><span class="line">R2---R22(40&lt;br/&gt;41&lt;br/&gt;48)</span><br><span class="line">R2---R23(52&lt;br/&gt;55&lt;br/&gt;57)</span><br><span class="line">R3---R31(61&lt;br/&gt;62&lt;br/&gt;66)</span><br><span class="line">R3---R32(73&lt;br/&gt;74&lt;br/&gt;79)</span><br><span class="line">R3---R33(84&lt;br/&gt;86&lt;br/&gt;87)</span><br><span class="line">subgraph 数据链表</span><br><span class="line">R11</span><br><span class="line">R12</span><br><span class="line">R13</span><br><span class="line">R21</span><br><span class="line">R22</span><br><span class="line">R23</span><br><span class="line">R31</span><br><span class="line">R32</span><br><span class="line">R33</span><br><span class="line">end</span><br><span class="line">subgraph 索引相连</span><br><span class="line">R1</span><br><span class="line">R2</span><br><span class="line">R3</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>B* 树具有以下特点：</p>
+<ul>
+<li>B* 树定义了非叶子节点关键字个数至少为 (2 &#x2F; 3) * M。其块的最低使用率为 2 &#x2F; 3，而 B+ 树最低使用率为 1 &#x2F; 2</li>
+<li>B* 树分配新节点的概率更低，空间使用率更高</li>
+</ul>
+<h3 id="前缀树"><a href="#前缀树" class="headerlink" title="前缀树"></a>前缀树</h3><p>前缀树（字典树、单词查找树、键树），是一种多路查找树。利用元素的公共前缀来减少查询时间。</p>
+<p>下面是一个存储了数个单词（a、act、art、cat、can、cant、roin）的前缀树：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">R[ ]</span><br><span class="line">style a fill: #C0F0E0</span><br><span class="line">R --- a((a))</span><br><span class="line">R --- c[c]</span><br><span class="line">R --- r[r]</span><br><span class="line">a --- ac[c]</span><br><span class="line">a --- ar[r]</span><br><span class="line">style act fill: #C0F0E0</span><br><span class="line">ac --- act((t))</span><br><span class="line">style art fill: #C0F0E0</span><br><span class="line">ar --- art((t))</span><br><span class="line">c --- ca[a]</span><br><span class="line">style cat fill: #C0F0E0</span><br><span class="line">ca --- cat((t))</span><br><span class="line">style can fill: #C0F0E0</span><br><span class="line">ca --- can((n))</span><br><span class="line">style cant fill: #C0F0E0</span><br><span class="line">can --- cant((t))</span><br><span class="line">r --- ro[o]</span><br><span class="line">ro --- roi[i]</span><br><span class="line">style roin fill: #C0F0E0</span><br><span class="line">roi --- roin((n))</span><br></pre></td></tr></table></figure>
+
+<p>前缀树具有如下特点：</p>
+<ul>
+<li><p>根节点不包含字符，除根节点外每一个节点包含一个字符。</p>
+</li>
+<li><p>节点的路径即为一条存储字符串。特别的，根节点表示空字符串</p>
+<p>每个节点持有一个计数器，计算该节点处存储的字符串数量。</p>
+</li>
+<li><p>所有的子节点都与父节点具有相同前缀。</p>
+</li>
+<li><p>在前缀树中，查询字符串的时间复杂度为 O(L)，其中 L 为字符串长度</p>
+</li>
+</ul>
+<p><strong>实现前缀树：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class TrimTree &#123;</span><br><span class="line">    /* 节点类 */</span><br><span class="line">    private static class Node &#123;</span><br><span class="line">        Map&lt;Character, Node&gt; next = null;</span><br><span class="line">        int count = 0;</span><br><span class="line">        Node() &#123;</span><br><span class="line">            this.next = new HashMap&lt;&gt;();</span><br><span class="line">            this.count = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Node root = null;		// 根节点</span><br><span class="line"></span><br><span class="line">    /* 构造器 */</span><br><span class="line">    public TrimTree(String... strings) &#123;</span><br><span class="line">        this.root = new Node();</span><br><span class="line">        for (String s : strings) add(s);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 添加字符串 */</span><br><span class="line">    public void add(String s) &#123;</span><br><span class="line">        Node p = root;</span><br><span class="line">        for (char c : s.toCharArray()) &#123;</span><br><span class="line">            if (!p.next.containsKey(c)) p.next.put(c, new Node());</span><br><span class="line">            p = p.next.get(c);</span><br><span class="line">        &#125;</span><br><span class="line">        p.count++;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 查找字符串 */</span><br><span class="line">    public int search(String s) &#123;</span><br><span class="line">        Node p = root;</span><br><span class="line">        for (char c : s.toCharArray()) &#123;</span><br><span class="line">            if (!p.next.containsKey(c)) return 0;</span><br><span class="line">            p = p.next.get(c);</span><br><span class="line">        &#125;</span><br><span class="line">        return p.count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><blockquote>
+<p>线性表局限于一个直接前驱和一个直接后继的关系。</p>
+<p>树可能有数个直接后继，但只能有一个直接前驱（父节点）</p>
+<p>当需要表示多对多关系时，就需要 <strong>图</strong></p>
+</blockquote>
+<p>图是一种数据结构。每个节点可以有零个或多个相邻元素。</p>
+<p>两个节点间的连接称为 <strong>边（edge）</strong>，节点也被称为 <strong>顶点（vertex）</strong></p>
+<p>图的分类：</p>
+<ul>
+<li>按照 顶点间的连接有无方向 分为：有向图、无向图</li>
+<li>按照 是否带权 分为：带权图（网）、非带权图</li>
+<li>按照 表示方式 分为：二维数组表示（邻接矩阵）、链表表示（邻接表）</li>
+</ul>
+<p>一组连接的节点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(1)---B(0)</span><br><span class="line">A---C(2)</span><br><span class="line">B---C</span><br><span class="line">B---D(3)</span><br><span class="line">B---E(4)</span><br></pre></td></tr></table></figure>
+
+<p><strong>邻接矩阵：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   0  1  2  3  4</span><br><span class="line">0 ┌0, 1, 1, 1, 1┐</span><br><span class="line">1 |1, 0, 1, 0, 0|</span><br><span class="line">2 |1, 1, 0, 0, 0|</span><br><span class="line">3 |1, 0, 0, 0, 0|</span><br><span class="line">4 └1, 0, 0, 0, 0┘</span><br></pre></td></tr></table></figure>
+
+<p>其中，(0, 1) &#x3D;&#x3D; 1 表示 节点 0 与 节点 1 相连</p>
+<p>邻接矩阵为每个顶点都分配了 n 个边的空间。这样，造成了空间的损失</p>
+<p><strong>邻接表：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 [1]→[2]→[3]→[4]→</span><br><span class="line">1 [0]→[2]→</span><br><span class="line">2 [0]→[1]→</span><br><span class="line">3 [0]→</span><br><span class="line">4 [0]→</span><br></pre></td></tr></table></figure>
+
+<p>邻接表为每个节点创建一个链表，链表中是与其相连的节点。邻接表由 数组 + 链表 组成</p>
+<p>邻接表只关心存在的边，不关心不存在的边，因此没有空间浪费</p>
+<h3 id="深度优先搜索-DFS"><a href="#深度优先搜索-DFS" class="headerlink" title="深度优先搜索 DFS"></a>深度优先搜索 DFS</h3><p>深度优先搜索（Depth First Search），其策略是优先纵向挖掘深入，而不是对一个节点的所有节点先进行横向访问。</p>
+<p>从初始访问节点出发，首先访问其第一个相邻节点。之后，从那个访问节点出发，递归访问第一个相邻节点。直到一个节点的路径完全访问结束后，才访问第二个节点。</p>
+<ul>
+<li>访问初始节点 s，标记其为已访问</li>
+<li>从 s 的第一个相邻节点起，以递归方式对其进行深度优先搜索。</li>
+<li>当前节点没有可访问的相邻节点时，就完成了对一条路径访问。此时才返回上一级，继续搜索下一节点。</li>
+</ul>
+<h3 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索 BFS"></a>广度优先搜索 BFS</h3><p>广度优先搜索（Broad First Search），其策略是优先横向访问所有相邻节点，而不是对一条路径进行纵向挖掘。</p>
+<p>从初始访问节点出发，记录所有相邻节点。之后，访问先前记录节点，并记录所有相邻节点。直到没有能访问的节点为止，就完成了对所有连接节点的搜索。</p>
+<ul>
+<li>记录初始节点 s</li>
+<li>访问上一次记录的节点，将其标记为已访问。将那些节点的所有可访问的相邻节点记录。</li>
+<li>重复上一步，直到没有可访问的节点时，就完成了对所有连接节点的访问。</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="F1-实现赫夫曼编码-解码"><a href="#F1-实现赫夫曼编码-解码" class="headerlink" title="F1 实现赫夫曼编码&#x2F;解码"></a>F1 实现赫夫曼编码&#x2F;解码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">/* 压缩数据包 */</span><br><span class="line">class DataBox &#123;</span><br><span class="line">    public byte[] data;				// 压缩信息主体</span><br><span class="line">    public Map&lt;Byte, String&gt; key;	// 赫夫曼表</span><br><span class="line">    public int step;				// 补位数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Huff &#123;</span><br><span class="line">    /* 将数据压缩，返回一个压缩包 */</span><br><span class="line">    public static DataBox huff(byte[] data) &#123;</span><br><span class="line">        DataBox dataBox = new DataBox();</span><br><span class="line">        dataBox.key = getHuffMap(data);						// 在压缩包内记录编码表</span><br><span class="line">        dataBox.data = toHuff(data, dataBox);				// 在压缩包内记录压缩后数据，也会记录补位数</span><br><span class="line">        return dataBox;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 根据要压缩的数据，计算那个赫夫曼表 */</span><br><span class="line">    private static Map&lt;Byte, String&gt; getHuffMap(byte[] val) &#123;</span><br><span class="line">        if (val == null || val.length == 0) return new HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;Byte, Node&gt; huff = new HashMap&lt;&gt;();</span><br><span class="line">        for (byte c : val) &#123;								// 记录每个字符出现的次数</span><br><span class="line">            if (huff.containsKey(c)) huff.get(c).times++;</span><br><span class="line">            else huff.put(c, new Node(c, 1));</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;Node&gt; pq = new PriorityQueue&lt;&gt;(huff.values());</span><br><span class="line">        while (pq.size() &gt; 1) &#123;								// 生成赫夫曼树</span><br><span class="line">            Node temp = new Node(pq.remove(), pq.remove());</span><br><span class="line">            pq.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;Byte, String&gt; ret = new HashMap&lt;&gt;();</span><br><span class="line">        update(ret, pq.remove(), &quot;&quot;);						// 根据那个赫夫曼树，生成赫夫曼编码</span><br><span class="line">        if (ret.size() == 1) ret.put(val[0], &quot;0&quot;);			// 特别地，只有唯一字符从场合这样处理</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 根据赫夫曼表，将数据压缩 */</span><br><span class="line">    private static byte[] toHuff(byte[] val, DataBox d) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        for (byte c : val) &#123;								// 得到压缩后的 bit 字符串</span><br><span class="line">            sb.append(d.key.get(c));</span><br><span class="line">        &#125;</span><br><span class="line">        byte[] ret = new byte[(sb.length() + 7) / 8];		// 压缩后的数据放在 byte 数组中</span><br><span class="line">        d.step = sb.length() % 8;							// 记录那个补位数</span><br><span class="line">        for (int i = 0; i &lt; ret.length; i ++) &#123;</span><br><span class="line">            if (i &gt;= ret.length - 1 &amp;&amp; d.step != 0) &#123;		// 最后一位可能有补位。那个场合，让有效数字在最左侧</span><br><span class="line">                ret[i] = (byte) (Integer.parseInt(sb.substring(8 * i), 2) &lt;&lt; (8 - d.step));</span><br><span class="line">            &#125; else ret[i] = (byte) Integer.parseInt(sb.substring(8 * i, 8 * i + 8), 2);</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 该方法能遍历赫夫曼树，以获取赫夫曼表 */</span><br><span class="line">    private static void update(Map&lt;Byte, String&gt; ss, Node root, String s) &#123;</span><br><span class="line">        if (root == null) return;</span><br><span class="line">        else if (root.right == null &amp;&amp; root.left == null) &#123;</span><br><span class="line">            ss.put(root.val, s);									// 是叶节点的场合，记录这个编码值</span><br><span class="line">        &#125;</span><br><span class="line">        if (root.left != null) update(ss, root.left, s + &quot;0&quot;);		// 向左路径记为 0</span><br><span class="line">        if (root.right != null) update(ss, root.right, s + &quot;1&quot;);	// 向右路径记为 1</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /* 解压压缩包 */</span><br><span class="line">    public static byte[] antiHuff(DataBox d) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        for (int i = 0; i &lt; d.data.length; i++) &#123;					// 获取那个压缩数据的编码</span><br><span class="line">            String temp = null;</span><br><span class="line">            if (i &gt;= d.data.length - 1 &amp;&amp; d.step != 0) sb.append((temp = Integer.toBinaryString(d.data[i] | 256)), temp.length() - 8, temp.length() - 8 + d.step);				// 遍历到最后，要处理那个补位</span><br><span class="line">            else sb.append((temp = Integer.toBinaryString(d.data[i] | 256)).substring(temp.length() - 8));</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Byte&gt; anti = new HashMap&lt;&gt;();</span><br><span class="line">        for (Byte aByte : d.key.keySet()) &#123;							// 将编码表转化为解码表</span><br><span class="line">            anti.put(d.key.get(aByte), aByte);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Byte&gt; ret = new ArrayList&lt;&gt;();</span><br><span class="line">        StringBuilder s = new StringBuilder();</span><br><span class="line">        for (int i = 0; i &lt; sb.length(); i++) &#123;						// 按照解码表，把压缩编码转化为未解压编码</span><br><span class="line">            s.append(sb.charAt(i));</span><br><span class="line">            if (anti.containsKey(s.toString())) &#123;</span><br><span class="line">                ret.add(anti.get(s.toString()));</span><br><span class="line">                s = new StringBuilder();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        byte[] bt = new byte[ret.size()];							// 将 Byte 数组转化为 byte 数组</span><br><span class="line">        for (int i = 0; i &lt; bt.length; i++) &#123;</span><br><span class="line">            bt[i] = ret.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        return bt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	/* 节点类，是构建赫夫曼树时用到的类 */</span><br><span class="line">    static class Node implements Comparable&lt;Node&gt; &#123;</span><br><span class="line">        public byte val;			// 代表的 byte 值</span><br><span class="line">        public int times;			// 出现的次数</span><br><span class="line">        public Node left;</span><br><span class="line">        public Node right;</span><br><span class="line"></span><br><span class="line">        public Node(Node l, Node r) &#123;</span><br><span class="line">            this.left = l;</span><br><span class="line">            this.right = r;</span><br><span class="line">            this.times = l.times + r.times;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Node(byte val, int pow) &#123;</span><br><span class="line">            this.val = val;</span><br><span class="line">            this.times = pow;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        public Node(byte val) &#123;</span><br><span class="line">            this.val = val;</span><br><span class="line">            this.times = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int compareTo(Node o) &#123;</span><br><span class="line">            return this.times - o.times;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="F2-实现平衡二叉树"><a href="#F2-实现平衡二叉树" class="headerlink" title="F2 实现平衡二叉树"></a>F2 实现平衡二叉树</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">class AVL&#123;</span><br><span class="line">    public Node root = null;				// 根节点</span><br><span class="line">    </span><br><span class="line">    /* 添加一个值（添加一个节点）</span><br><span class="line">    	val：要添加的值 */</span><br><span class="line">    public void add(int val) &#123;</span><br><span class="line">        Node toAdd = new Node(val);</span><br><span class="line">        if (root == null) root = toAdd;</span><br><span class="line">        else &#123;</span><br><span class="line">            Node par = root;</span><br><span class="line">            Node temp = root;</span><br><span class="line">            while (temp != null) &#123;			// 确定其插入位置</span><br><span class="line">                par = temp;</span><br><span class="line">                if (val &gt; temp.val) &#123;</span><br><span class="line">                    temp = temp.right;</span><br><span class="line">                    toAdd.way = true;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    temp = temp.left;</span><br><span class="line">                    toAdd.way = false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (toAdd.way) &#123;				// 将其插入到指定位置</span><br><span class="line">                par.right = toAdd;</span><br><span class="line">                par.right.parent = par;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                par.left = toAdd;</span><br><span class="line">                par.left.parent = par;</span><br><span class="line">            &#125;</span><br><span class="line">            while (true) &#123;					// 维护该平衡二叉树</span><br><span class="line">                par = toAVL(par);</span><br><span class="line">                if (par.parent == null) &#123;</span><br><span class="line">                    root = par;</span><br><span class="line">                    break;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    if (par.way) par.parent.right = par;</span><br><span class="line">                    else par.parent.left = par;</span><br><span class="line">                    par = par.parent;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    /* 维护平衡二叉树</span><br><span class="line">    	root: 待检查节点 */</span><br><span class="line">    private static Node toAVL(Node root) &#123;</span><br><span class="line">        if (root == null) return null;</span><br><span class="line">        int gap = root.rightHeight() - root.leftHeight();</span><br><span class="line">        if (Math.abs(gap) &gt; 1) &#123;			// |gap| &gt; 1 时，需要旋转</span><br><span class="line">            if (gap &gt; 0) &#123;					// gap &gt; 0 需要左旋，否则右旋</span><br><span class="line">                if (root.right.leftHeight() &gt; root.right.rightHeight()) root.right = roll(root.right, true);</span><br><span class="line">                return roll(root, false);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                if (root.left.rightHeight() &gt; root.left.leftHeight()) root.left = roll(root.left, false);</span><br><span class="line">                return roll(root, true);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else return root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* 对该节点进行旋转。</span><br><span class="line">    	root：待旋转节点</span><br><span class="line">    	dirR：true 的场合右旋，否则左旋 */</span><br><span class="line">    private static Node roll(Node root, boolean dirR) &#123;</span><br><span class="line">        Node temp = null;</span><br><span class="line">        if (dirR) &#123;</span><br><span class="line">            temp = root.left;</span><br><span class="line">            root.left = temp.right;</span><br><span class="line">            if (temp.right != null) &#123;</span><br><span class="line">                temp.right.way = false;</span><br><span class="line">                temp.right.parent = root;</span><br><span class="line">            &#125;</span><br><span class="line">            temp.right = root;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            temp = root.right;</span><br><span class="line">            root.right = temp.left;</span><br><span class="line">            if (temp.left != null) &#123;</span><br><span class="line">                temp.left.way = true;</span><br><span class="line">                temp.left.parent = root;</span><br><span class="line">            &#125;</span><br><span class="line">            temp.left = root;</span><br><span class="line">        &#125;</span><br><span class="line">        temp.way = root.way;</span><br><span class="line">        temp.parent = root.parent;</span><br><span class="line">        root.way = dirR;</span><br><span class="line">        root.parent = temp;</span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /* 一个展示树的方法。供 debug 用 */</span><br><span class="line">    public static void show(Node root) &#123;</span><br><span class="line">        LinkedList&lt;Node&gt; a = new LinkedList&lt;&gt;();</span><br><span class="line">        LinkedList&lt;Node&gt; b = new LinkedList&lt;&gt;();</span><br><span class="line">        a.add(root);</span><br><span class="line">        while (!a.isEmpty()) &#123;</span><br><span class="line">            Node temp = a.removeFirst();</span><br><span class="line">            System.out.print(temp.val + &quot; &quot;);</span><br><span class="line">            if (temp.left != null) b.add(temp.left);</span><br><span class="line">            if (temp.right != null) b.add(temp.right);</span><br><span class="line">            if (a.isEmpty()) &#123;</span><br><span class="line">                System.out.println();</span><br><span class="line">                a = b;</span><br><span class="line">                b = new LinkedList&lt;&gt;();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;共 &quot; + count(root) + &quot; 个节点&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /* 一个清点树中节点的方法 */</span><br><span class="line">    public static int count(Node root) &#123;</span><br><span class="line">        if (root == null) return 0;</span><br><span class="line">        return 1 + count(root.left) + count(root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static class Node &#123;</span><br><span class="line">        public int val;				// 值</span><br><span class="line">        public Node left;			// 左节点</span><br><span class="line">        public Node right;			// 右节点</span><br><span class="line">        public Node parent;			// 父节点</span><br><span class="line">        boolean way = false;        // false：该节点是左节点；true：是右节点</span><br><span class="line"></span><br><span class="line">        public Node(int val) &#123;</span><br><span class="line">            this.val = val;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public int leftHeight() &#123;	// 左子树高度</span><br><span class="line">            return (left == null ? 0 : left.height());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public int rightHeight() &#123;	// 右子树高度</span><br><span class="line">            return (right == null ? 0 : right.height());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public int height() &#123;		// 该节点树高度</span><br><span class="line">            return Math.max(leftHeight(), rightHeight()) + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">sinarcsinx</div><div class="post-copyright__author_desc">事在人为</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/')">Java 树</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/wepay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/wepay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Java 树&amp;url=https://sinarcsinx.fun/2022/12/07/learn/Java/Java%20%E6%A0%91/&amp;pic=https://picbed.sinarcsinx.fun/markdown/Java.jpeg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sinarcsinx.fun" target="_blank">Sins Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>教程<span class="tagsPageCount">22</span></a><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">20</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://picbed.sinarcsinx.fun/markdown/202412101633593.jpeg" data-sites="facebook,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/06/learn/Java/Java%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java 数据结构</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/08/learn/Java/Java%20%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 图形界面设计</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2022/12/10/learn/Java/Java%20IO%E6%B5%81/" title="Java IO流"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-10</div><div class="title">Java IO流</div></div></a></div><div><a href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-12</div><div class="title">Java 反射</div></div></a></div><div><a href="/2022/11/26/learn/Java/Java%20%E5%8F%98%E9%87%8F/" title="Java 变量"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-11-26</div><div class="title">Java 变量</div></div></a></div><div><a href="/2022/12/08/learn/Java/Java%20%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/" title="Java 图形界面设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-08</div><div class="title">Java 图形界面设计</div></div></a></div><div><a href="/2022/12/05/learn/Java/Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB/" title="Java 常用类"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-05</div><div class="title">Java 常用类</div></div></a></div><div><a href="/2022/12/09/learn/Java/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-09</div><div class="title">Java 多线程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">事在人为</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">sinarcsinx</h1><div class="author-info__desc">事在人为</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/crazyloong5" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/11379256" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%91%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是树？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">二叉树：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">二叉树的遍历：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">顺序存储二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">顺序存储二叉树的转换：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">线索化二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">赫夫曼树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%B5%AB%E5%A4%AB%E6%9B%BC%E6%A0%91%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">生成赫夫曼树：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">赫夫曼编码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">二叉排序树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">平衡二叉树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">线段树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">多路查找树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">2-3 树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">B 树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#B-%E6%A0%91%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">B+ 树：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B-%E6%A0%91%EF%BC%9A-1"><span class="toc-number">2.</span> <span class="toc-text">B* 树：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">前缀树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number"></span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-DFS"><span class="toc-number"></span> <span class="toc-text">深度优先搜索 DFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-BFS"><span class="toc-number"></span> <span class="toc-text">广度优先搜索 BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number"></span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#F1-%E5%AE%9E%E7%8E%B0%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81-%E8%A7%A3%E7%A0%81"><span class="toc-number"></span> <span class="toc-text">F1 实现赫夫曼编码&#x2F;解码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F2-%E5%AE%9E%E7%8E%B0%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number"></span> <span class="toc-text">F2 实现平衡二叉树</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/20/learn/SQL/" title="SQL语言"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/202412101633593.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SQL语言"/></a><div class="content"><a class="title" href="/2022/12/20/learn/SQL/" title="SQL语言">SQL语言</a><time datetime="2022-12-20T00:10:50.000Z" title="发表于 2022-12-20 08:10:50">2022-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/14/learn/Java/Jdbc%20%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Jdbc和数据库连接池"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jdbc和数据库连接池"/></a><div class="content"><a class="title" href="/2022/12/14/learn/Java/Jdbc%20%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Jdbc和数据库连接池">Jdbc和数据库连接池</a><time datetime="2022-12-14T00:10:50.000Z" title="发表于 2022-12-14 08:10:50">2022-12-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/13/learn/Java/Java%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java 正则表达式"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 正则表达式"/></a><div class="content"><a class="title" href="/2022/12/13/learn/Java/Java%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java 正则表达式">Java 正则表达式</a><time datetime="2022-12-13T00:10:50.000Z" title="发表于 2022-12-13 08:10:50">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 反射"/></a><div class="content"><a class="title" href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射">Java 反射</a><time datetime="2022-12-12T00:10:50.000Z" title="发表于 2022-12-12 08:10:50">2022-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/11/learn/Java/Java%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java 网络编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 网络编程"/></a><div class="content"><a class="title" href="/2022/12/11/learn/Java/Java%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java 网络编程">Java 网络编程</a><time datetime="2022-12-11T00:10:50.000Z" title="发表于 2022-12-11 08:10:50">2022-12-11</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2603327054@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7694200251" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/crazyloong5" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/11379256" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2022 - 2024 By <a class="footer-bar-link" href="/" title="sinarcsinx" target="_blank">sinarcsinx</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/crazyloong5" title="Github">Github</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">1</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://sinarcsinx.fun/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/sin-planet.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">常用网站</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.baidu.com/" title="百度"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/baidu.png" alt="百度"/><span class="back-menu-item-text">百度</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?type=:playlist&amp;id=12975125061&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 0.88rem; color: rgb(159, 134, 131);">Java<sup>20</sup></a><a href="/tags/MarkDown/" style="font-size: 0.88rem; color: rgb(43, 112, 165);">MarkDown<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem; color: rgb(129, 59, 93);">SQL<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem; color: rgb(162, 32, 192);">教程<sup>22</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="12975125061" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=12975125061&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎来到SinsBlog!`,
+    "已上线",
+    dnum,
+    "天",
+    "©2022 By sinarcsinx V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，程序员.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by sinarcsinx %c 你正在访问 sinarcsinx 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.sinarcsinx.fun/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.sinarcsinx.fun/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.sinarcsinx.fun/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 1440/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "2603327054@qq.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Java 概述 | Sins Blog</title><meta name="keywords" content="教程,Java"><meta name="author" content="sinarcsinx"><meta name="copyright" content="sinarcsinx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Java 概述"><meta name="application-name" content="Java 概述"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Java 概述"><meta property="og:url" content="https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/index.html"><meta property="og:site_name" content="Sins Blog"><meta property="og:description" content="程序：一系列有序指令的集合  Java 历史 目前 Java 版权属于甲骨文公司。  长期支持的版本只有 Java8 与 Java11。这两个版本也是最多使用的版本。  Java SE：标准版 Java EE：企业版（重要） Java ME：小型版（少）   Java 重要特点 面向对象（oop）"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"><meta property="article:author" content="sinarcsinx"><meta property="article:tag" content="sinarcsinx,blog,Blog,博客,Sin的博客"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"><meta name="description" content="程序：一系列有序指令的集合  Java 历史 目前 Java 版权属于甲骨文公司。  长期支持的版本只有 Java8 与 Java11。这两个版本也是最多使用的版本。  Java SE：标准版 Java EE：企业版（重要） Java ME：小型版（少）   Java 重要特点 面向对象（oop）"><link rel="shortcut icon" href="https://picbed.sinarcsinx.fun/img/sin-planet.ico"><link rel="canonical" href="https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w","backTitle":"♪(^∇^*)"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://twikoo.sinarcsinx.fun/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔍 分享与热心帮助"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: sinarcsinx","link":"链接: ","source":"来源: Sins Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Sins Blog',
+  title: 'Java 概述',
+  postAI: '',
+  pageFillDescription: 'Java 历史, Java 重要特点, Java 的开发工具, Java 运行基础, Java 执行流程分析, 编译, 运行, 注意修改后的 .Java 源文件需要重新编译, Java 开发注意事项和细节说明, 代码规范, Java 转义字符, 注释, 注释类型, 文档注释, 注释的插入, JShell, 附录, DOS, DOS 的基本原理, 常用的 DOS 命令程序一系列有序指令的集合历史目前版权属于甲骨文公司长期支持的版本只有与这两个版本也是最多使用的版本标准版企业版重要小型版少重要特点面向对象简单来说面向对象是一种程序设计技术其重点放在数据对象和对象的接口上健壮性其强类型机制异常处理垃圾自动收集是健壮性的保证强调早期问题检测后期动态检测及消除易出错的情况其编译器能检测很多其他语言仅在运行时才会发现的问题可移植性一个编译好的文件可以在多个不同系统下直接运行中没有依赖具体实现的地方其基本数据类型大小固定有关运算的行为等都有明确说明其绝大多数库都能很好地支持平台独立性而不用担心操作系统解释型解释型语言编译后需要解释器才能运行相对的编译型语言可以被直接执行解释器能在任何移植了解释器的机器上直接执行字节码简单性语法是语法的一个纯净版本占用内存小分布式有一个丰富的例程库用于处理像和之类的协议应用程序能够通过打开和访问网络上的对象安全性体系结构中立高性能多线程动态性库中可以自由地添加新方法和实例变量而对客户端没有任何影响的开发工具编译器将程序编译成字节码解释器执行已经转换为字节码的文件调试器调试程序反编译将类文件还原回方法和变量文档生成器创建文件运行基础虚拟机是跨平台性的基础被包含在中不同平台有各自对应的不同屏蔽了底层平台的区别能做到一次编译到处运行全称开发工具包的开发工具等等给开发人员使用的包含运行环境标准类库的核心类库运行一个程序的基本条件执行流程分析文件源文件编译文件字节码文件运行结果编译选项源文件名中是可选项通过编译器将源文件编译成可识别的字节码文件字节码文件是二进制格式的其格式是统一的在源文件目录下使用编译工具对文件进行编译如果没有错误将没有提示当前目录会对应其中每一个类生成对应名称的文件即字节码文件也是可执行的程序运行选项程序名参数列表中是可选项有了可执行的程序字节码文件通过运行工具对字节码文件进行执行本质是将文件装载到运行注意修改后的源文件需要重新编译开发注意事项和细节说明源文件以为扩展名源文件的基本组成部分是类应用程序的执行入口是方法其有固定的书写格式语言严格区分大小写方法由一条条语句构成每个语句都以结束大括号是成对出现的缺一不可习惯先写再写代码一个源文件中最多只有一个类其余类不限如果文件中包含类则文件名必须按该类命名也可以把方法写在非类中然后运行指定非类这样入口方法是非类的主方法在控制台按可以实现代码补齐按方向键或可以调用历史代码代码规范类方法的注释要以的方式来写非的注释往往是给维护者看的着重告诉读者为什么这样写如何修改注意什么问题等不要用这种名称命名变量尽量写得清楚另外源代码使用的是码因此汉语也能作为标识符但不推荐使用汉语做标识符使用键操作使代码右移使用键使代码左移运算符两边各加入空格注意排版规范源文件使用编码代码行宽度不要超过个字符超过时通过换行保持简洁代码编写次行风格及行尾风格次行风格换行输入使其总在行头行尾风格在一行的末尾输入换行输入一段代码完成一个小功能尽量不要混合这样更加灵活转义字符一个制表位实现对齐功能换行符一个一个一个一个回车不是换行一个小圆点退格键一个具体的字符其中是位进制数一个具体的字符其中是位进制数换页空字符注释注释用于注解说明程序的文字其提高了代码的可读性是一个程序员必须要具有的良好编程习惯将自己的思想通过注释先整理出来再用代码去体现被注释的文字不会被解释执行注释类型单行注释这是一条单行注释选中文字按将选中文字变为单行注释多行注释这是一段多行注释多行注释中不允许多行注释嵌套文档注释以下写法也同样合法可以每行开头不加星号文档注释文档注释的注释内容可被中的工具解析生成一套以形式体现的说明文档抽取注释生成目录文档名文档注释包含标记和紧随其后的自由格式文本标记以开始如下面列出了一些通用注释始于创建一个始于条目其后文本可以是引入该特性的版本的任何描述作者产生一个作者条目可以使用多个标记版本产生一个版本条目这里的文本可以是对当前版本的任意描述超链接产生一个超链接链接到相关部分或外部文档引用在部分增加一个超链接可以添加多个标记但必须放在一起这里的引用有以下选择一段文本只提供类方法或变量的名字那个场合使用来分隔类名和方法名后有一个字符的场合需要指定超链接可以指向任何后有一个字符的场合文本会显示在部分自由格式文本第一句应该是一个概要性的句子会自动抽取这些语句生成概要页自由格式文本中可以使用修饰符注释的插入工具抽取文档注释时会从以下位置抽取模块包包注释要想产生包注释必须在每个包目录中添加一个单独的文件有种方法提供一个名为的文件其中只能包含文档注释以及后面的一个语句不能包含更多的代码或注释提供一个名为的文件此时会抽取间的所有文本公共类和接口类注释类注释必须放在语句后类定义之前公共的和受保护的字段只需要对公共字段通常是静态常量建立文档公共的和受保护的构造器和方法方法注释必须放在所描述的方法之前除了通用标记外还能使用如下标记变量描述该标记能给当前方法的参数部分添加一个条目该描述可以占据多行一个方法的所有标记必须放在一起返回值描述该标记能给当前方法的返回值部分添加一个条目该描述可以占据多行异常描述该标记能给当前方法的可能抛出的异常添加一个条目中引入了一种使用的方法即程序提供了一个读取计算打印循环键入一个表达式会评估你的输入打印结果并等待下一个输入在命令提示符中输入以启动在中输入以启动欢迎使用版本要大致了解该版本请键入会显示一个问候语之后出现提示符输入一条语句会自动打印每条输入语句的值其中的表示该值可以用于将来的计算上面的是自己定义的标识符输入不完整的语句后按键实现方法补全上面的场合提示了所有方法的列表自动补全后的代码可以手动填入剩余部分可以按键自动填充运行过的代码以实现重复运行附录磁盘操作系统的基本原理在控制台输入指令系统接受指令解析指令执行指令相对路径和绝对路径举例从访问到相对路径从当前目录开始定位形成的路径返回上一级绝对路径从顶级目录开始定位形成的路径常用的命令查看帮助或等查看目录内容查看当前目录或查看指定目录切换到其他盘从盘切换至盘切换到当前盘的其他目录返回上级目录切换至根目录查看子集目录当前目录或指定目录清屏退出创建删除目录目录名目录名拷贝删除文件文件名目录文件名移动文件文件名目录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-26 17:07:50',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Sins Blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://picbed.sinarcsinx.fun/markdown/avator.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://sinarcsinx.fun/" title="博客"><img class="back-menu-item-icon" src="https://picbed.sinarcsinx.fun/img/sin-planet.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">常用网站</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.baidu.com/" title="百度"><img class="back-menu-item-icon" src="https://picbed.sinarcsinx.fun/img/baidu.png" alt="百度"/><span class="back-menu-item-text">百度</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Sins Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?type=:playlist&amp;id=12975125061&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/wepay.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://picbed.sinarcsinx.fun/img/wepay.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://picbed.sinarcsinx.fun/img/alipay.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 1.05rem; color: rgb(44, 73, 66);">Java<sup>20</sup></a><a href="/tags/MarkDown/" style="font-size: 1.05rem; color: rgb(98, 139, 114);">MarkDown<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 1.05rem; color: rgb(160, 175, 37);">SQL<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem; color: rgb(84, 147, 76);">教程<sup>22</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url">学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>教程</span></a><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Java 概述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-11-26T08:07:50.000Z" title="发表于 2022-11-26 16:07:50">2022-11-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2022-11-26T09:07:50.000Z" title="更新于 2022-11-26 17:07:50">2022-11-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为宁波"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>宁波</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/"><header><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url">学习</a><a href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">教程</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><h1 id="CrawlerTitle" itemprop="name headline">Java 概述</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">sinarcsinx</span><time itemprop="dateCreated datePublished" datetime="2022-11-26T08:07:50.000Z" title="发表于 2022-11-26 16:07:50">2022-11-26</time><time itemprop="dateCreated datePublished" datetime="2022-11-26T09:07:50.000Z" title="更新于 2022-11-26 17:07:50">2022-11-26</time></header><blockquote>
+<p>程序：一系列有序指令的集合</p>
+</blockquote>
+<h2 id="Java-历史"><a href="#Java-历史" class="headerlink" title="Java 历史"></a>Java 历史</h2><ul>
+<li><p>目前 Java 版权属于甲骨文公司。</p>
+</li>
+<li><p>长期支持的版本只有 Java8 与 Java11。这两个版本也是最多使用的版本。</p>
+</li>
+<li><p>Java SE：标准版</p>
+<p>Java EE：企业版（重要）</p>
+<p>Java ME：小型版（少）</p>
+</li>
+</ul>
+<h2 id="Java-重要特点"><a href="#Java-重要特点" class="headerlink" title="Java 重要特点"></a>Java 重要特点</h2><ol>
+<li><p><strong>面向对象（oop）</strong></p>
+<p>简单来说，面向对象是一种程序设计技术。其重点放在数据（对象）和对象的接口上。</p>
+</li>
+<li><p><strong>健壮性</strong></p>
+<p>其强类型机制、异常处理、垃圾自动收集是健壮性的保证。</p>
+<p>Java 强调早期问题检测、后期动态检测，及消除易出错的情况。其编译器能检测很多其他语言仅在运行时才会发现的问题。</p>
+</li>
+<li><p><strong>可移植性</strong></p>
+<p>一个编译好的 <code>.class</code> 文件可以在多个不同系统下直接运行。</p>
+<p>Java 中没有 “依赖具体实现” 的地方。其基本数据类型大小固定，有关运算的行为等都有明确说明。其绝大多数库都能很好地支持平台独立性，而不用担心操作系统。</p>
+</li>
+<li><p><strong>解释型</strong></p>
+<p>解释型语言编译后需要解释器才能运行。相对的，编译型语言可以被直接执行。</p>
+<p>Java 解释器能在任何移植了解释器的机器上直接执行 Java 字节码。</p>
+</li>
+<li><p><strong>简单性</strong></p>
+<p> Java语法是C++语法的一个“纯净”版本。</p>
+<p> 占用内存小。</p>
+</li>
+<li><p><strong>分布式</strong></p>
+<p> Java有一个丰富的例程库，用于处理像HTTP和FTP之类的TCP&#x2F;IP协议。</p>
+<p> Java应用程序能够通过URL打开和访问网络上的对象。</p>
+</li>
+<li><p><strong>安全性</strong></p>
+</li>
+<li><p><strong>体系结构中立</strong></p>
+</li>
+<li><p><strong>高性能</strong></p>
+</li>
+<li><p><strong>多线程</strong></p>
+</li>
+<li><p><strong>动态性</strong><br>库中可以自由地添加新方法和实例变量，而对客户端没有任何影响。</p>
+</li>
+</ol>
+<h2 id="Java-的开发工具"><a href="#Java-的开发工具" class="headerlink" title="Java 的开发工具"></a>Java 的开发工具</h2><ul>
+<li><strong>javac</strong>：Java 编译器。将 Java 程序编译成字节码</li>
+<li><strong>java</strong>：Java 解释器。执行已经转换为字节码的文件</li>
+<li><strong>jdb</strong>：Java 调试器。调试 Java 程序</li>
+<li><strong>javap</strong>：反编译。将类文件还原回方法和变量</li>
+<li><strong>javadoc</strong>：文档生成器。创建 HTML 文件</li>
+</ul>
+<h2 id="Java-运行基础"><a href="#Java-运行基础" class="headerlink" title="Java 运行基础"></a>Java 运行基础</h2><blockquote>
+<p>JVM：Java 虚拟机</p>
+</blockquote>
+<ul>
+<li>JVM 是–跨平台性的基础。被包含在 JDK 中。</li>
+<li>不同平台有各自对应的不同 JVM</li>
+<li>JVM 屏蔽了底层平台的区别。能做到 ”一次编译，到处运行”</li>
+</ul>
+<blockquote>
+<p>JDK 全称：Java Development Kit（Java 开发工具包）</p>
+</blockquote>
+<ul>
+<li>JDK &#x3D; JRE + Java 的开发工具（Java，Javac，Javadoc 等等）</li>
+<li>给开发人员使用的，包含 JRE</li>
+</ul>
+<blockquote>
+<p>JRE：Java Runtime Enviroment（Java 运行环境）</p>
+</blockquote>
+<ul>
+<li>JRE &#x3D; JVM + Java SE 标准类库（Java 的核心类库）</li>
+<li>运行一个 Java 程序的基本条件</li>
+</ul>
+<h2 id="Java-执行流程分析"><a href="#Java-执行流程分析" class="headerlink" title="Java 执行流程分析"></a>Java 执行流程分析</h2><blockquote>
+<p><code>.Java</code> 文件（源文件） — javac（编译）— <code>.class</code> 文件（字节码文件） — java（运行）— 结果</p>
+</blockquote>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac [选项] 源文件名.java			//[] 中是可选项</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过编译器将 Java 源文件编译成 JVM 可识别的字节码文件。字节码文件是二进制格式的，其格式是统一的。在源文件目录下使用 Javac 编译工具对 Java 文件进行编译。</li>
+<li>如果没有错误将没有提示，当前目录会对应其中每一个类生成对应名称的 <code>.class</code> 文件，即字节码文件，也是可执行的 Java 程序。</li>
+</ul>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java [选项] 程序名 [参数列表]			//[] 中是可选项</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有了可执行的 Java 程序（字节码文件）</li>
+<li>通过运行工具<code>Java.exe</code> 对字节码文件进行执行，本质是将 <code>.class</code> 文件装载到 JVM 运行。</li>
+</ul>
+<h6 id="注意，修改后的-Java-源文件需要重新编译"><a href="#注意，修改后的-Java-源文件需要重新编译" class="headerlink" title="注意，修改后的 .Java 源文件需要重新编译"></a><em>注意，修改后的 .Java 源文件需要重新编译</em></h6><h2 id="Java-开发注意事项和细节说明"><a href="#Java-开发注意事项和细节说明" class="headerlink" title="Java 开发注意事项和细节说明"></a>Java 开发注意事项和细节说明</h2><ol>
+<li><p>源文件以 <code>.java</code> 为扩展名，源文件的基本组成部分是类（class）</p>
+</li>
+<li><p>Java 应用程序的执行入口是 <code>main()</code> 方法。其有<strong>固定的书写格式：</strong></p>
+<p><code>public static void main(string[]args)&#123;…&#125;</code></p>
+</li>
+<li><p>Java 语言<strong>严格区分大小写</strong>。</p>
+</li>
+<li><p>Java 方法由一条条语句构成，<strong>每个语句都以 <code>;</code> 结束</strong>。</p>
+</li>
+<li><p><strong>大括号 <code>&#123;</code> <code>&#125;</code> 是成对出现的</strong>，缺一不可。习惯先写 <code>&#123;&#125;</code> 再写代码</p>
+</li>
+<li><p>一个源文件中<strong>最多只有一个 public 类</strong>，其余类不限。</p>
+</li>
+<li><p><strong>如果文件中包含 public 类，则文件名必须按该类命名。</strong></p>
+</li>
+<li><p>也可以把 main 方法写在非 public 类中，然后运行指定非 public 类，这样入口方法是非 public 类的主方法。</p>
+</li>
+<li><p><strong>在控制台按 tab 可以实现代码补齐。按方向键 ↑ 或 ↓ 可以调用历史代码。</strong></p>
+</li>
+</ol>
+<h2 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h2><ol>
+<li><p>类、方法的注释要以 Javadoc 的方式来写</p>
+</li>
+<li><p>非 Javadoc 的注释，往往是给维护者看的，着重告诉读者为什么这样写，如何修改，注意什么问题等。</p>
+</li>
+<li><p>不要用 <code>a</code> <code>b</code>，这种名称命名变量，尽量写得清楚 <code>int age = 10;</code></p>
+<p>另外，<strong>Java 源代码使用的是 Unicode 码，因此汉语也能作为标识符</strong>。但<strong>不推荐</strong>使用汉语做标识符。</p>
+</li>
+<li><p>使用 tab 键操作，使代码右移。使用 shift+tab 键，使代码左移。</p>
+</li>
+<li><p>运算符两边各加入空格。注意排版规范。</p>
+</li>
+<li><p>源文件使用 UTF-8 编码。</p>
+</li>
+<li><p>代码行宽度不要超过 80 个字符。超过时通过换行保持简洁。</p>
+</li>
+<li><p>代码编写<strong>次行风格</strong>及<strong>行尾风格</strong></p>
+<blockquote>
+<p>次行风格：换行输入<code>&#123;</code> <code>&#125;</code>，使其总在行头</p>
+<p>行尾风格：在一行的末尾输入 <code>&#123;</code>，换行输入 <code>&#125;</code></p>
+</blockquote>
+</li>
+<li><p>一段代码完成一个小功能，尽量不要混合。这样更加灵活。</p>
+</li>
+</ol>
+<h2 id="Java-转义字符"><a href="#Java-转义字符" class="headerlink" title="Java 转义字符"></a>Java 转义字符</h2><ol>
+<li><p><code>\t</code>：一个制表位，实现对齐功能</p>
+</li>
+<li><p><code>\n</code>：换行符</p>
+</li>
+<li><p><code>\\</code>：一个 <code>\</code></p>
+</li>
+<li><p><code>\&quot;</code>：一个 <code>&quot;</code></p>
+</li>
+<li><p><code>\&#39;</code>：一个 <code>&#39;</code></p>
+</li>
+<li><p><code>\r</code>：一个回车（不是换行）</p>
+</li>
+<li><p><code>\.</code>：一个小圆点 <code>.</code></p>
+</li>
+<li><p><code>\b</code>：退格键</p>
+</li>
+<li><p><code>\u????</code>：一个具体的 Unicode 字符。其中 ???? 是 4 位 16 进制数</p>
+<p><code>\???</code>：一个具体的 Unicode 字符。其中 ??? 是 3 位 8 进制数</p>
+</li>
+<li><p><code>\f</code>：换页</p>
+</li>
+<li><p><code>\0</code>：空字符</p>
+</li>
+</ol>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><blockquote>
+<p>注释：用于注解说明程序的文字。其提高了代码的可读性，是一个程序员必须要具有的良好编程习惯。将自己的思想通过注释先整理出来，再用代码去体现。</p>
+<p>被注释的文字不会被 JVM 解释执行。</p>
+</blockquote>
+<h3 id="注释类型"><a href="#注释类型" class="headerlink" title="注释类型"></a>注释类型</h3><ul>
+<li><p><strong>单行注释：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一条单行注释</span></span><br></pre></td></tr></table></figure>
+
+<p>选中文字按 <code>ctrl</code> + <code>/</code> 将选中文字变为单行注释</p>
+</li>
+<li><p><strong>多行注释：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*	这</span></span><br><span class="line"><span class="comment">	是一段</span></span><br><span class="line"><span class="comment">	多行注释</span></span><br><span class="line"><span class="comment">	*/</span></span><br></pre></td></tr></table></figure>
+
+<p>多行注释中不允许多行注释嵌套。</p>
+</li>
+<li><p><strong>文档注释：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*<span class="doctag">@auther</span> Melody</span></span><br><span class="line"><span class="comment">*<span class="doctag">@version</span> 3.2.0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>以下写法也同样合法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	可以每行开头不加星号</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h3><blockquote>
+<p>文档注释的注释内容可被 JDK 中的 Javadoc 工具解析，生成一套以 HTML 形式体现的说明文档。</p>
+<p>抽取注释：<code>javadoc -d 生成目录 -author -.. 文档名.java</code></p>
+</blockquote>
+<p>文档注释包含 <strong>标记</strong> 和紧随其后的 <strong>自由格式文本</strong>：</p>
+<ul>
+<li><p><strong>标记：</strong></p>
+<p>以 <code>@</code> 开始，如 <code>@since</code></p>
+<p>下面列出了一些 <strong>通用注释</strong>：</p>
+<ul>
+<li><p><code>@since 始于</code>：创建一个 <strong>始于</strong> 条目。其后文本可以是引入该特性的版本的任何描述</p>
+</li>
+<li><p><code>@author 作者</code>：产生一个 <strong>作者</strong> 条目。可以使用多个 <code>@author</code> 标记</p>
+</li>
+<li><p><code>@version 版本</code>：产生一个 <strong>版本</strong> 条目。这里的文本可以是对当前版本的任意描述</p>
+</li>
+<li><p><code>@link 超链接</code>：产生一个 <strong>超链接</strong>，链接到 javadoc 相关部分或外部文档</p>
+<p><code>@see 引用</code>：在 <strong>see also</strong> 部分增加一个超链接。可以添加多个 <code>@see</code> 标记，但必须放在一起。</p>
+<p>这里的 引用 有以下选择：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*<span class="doctag">@see</span> com.test.Example#act()</span></span><br><span class="line"><span class="comment">*<span class="doctag">@see</span> &lt;a herf=&quot;../../../../../../&quot;&gt;Melody&#x27;s Box&lt;/a&gt;</span></span><br><span class="line"><span class="comment">*<span class="doctag">@see</span> &quot;一段文本&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>只提供类、方法或变量的名字。那个场合，使用 <strong>#</strong> 来分隔类名和方法名</li>
+<li><code>@see</code> 后有一个 <strong>&lt;</strong> 字符的场合，需要指定超链接。可以指向任何 URL</li>
+<li><code>@see</code> 后有一个 <strong>“</strong> 字符的场合，文本会显示在 see alse 部分</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>自由格式文本：</strong></p>
+<p>第一句应该是一个概要性的句子。javadoc 会自动抽取这些语句生成概要页</p>
+<p>自由格式文本中，可以使用 HTML 修饰符</p>
+</li>
+</ul>
+<h4 id="注释的插入"><a href="#注释的插入" class="headerlink" title="注释的插入"></a>注释的插入</h4><p>javadoc 工具抽取文档注释时，会从以下位置抽取：</p>
+<ul>
+<li><p>模块</p>
+</li>
+<li><p>包（包注释）</p>
+<p><strong>要想产生包注释，必须在每个包目录中添加一个单独的文件</strong></p>
+<p>有 2 种方法：</p>
+<ul>
+<li>提供一个名为 package-info.java 的文件。其中 <strong>只能</strong> 包含文档注释，以及后面的一个 package 语句。不能包含更多的代码或注释。</li>
+<li>提供一个名为 package.html 的 HTML 文件。此时会抽取 <code>&lt;body&gt;...&lt;/body&gt;</code> 间的所有文本</li>
+</ul>
+</li>
+<li><p>公共类和接口（类注释）</p>
+<p>类注释必须放在 import 语句后，类定义之前</p>
+</li>
+<li><p>公共的和受保护的字段</p>
+<p>只需要对公共字段（通常是静态常量）建立文档</p>
+</li>
+<li><p>公共的和受保护的构造器和方法</p>
+<p>方法注释必须放在所描述的方法之前。除了通用标记外，还能使用如下标记：</p>
+<ul>
+<li><p><code>@param 变量描述</code>：该标记能给当前方法的 <strong>参数</strong> 部分添加一个条目。该描述可以占据多行。</p>
+<p>一个方法的所有 <code>@param</code> 标记必须放在一起</p>
+</li>
+<li><p><code>@return 返回值描述</code>：该标记能给当前方法的 <strong>返回值</strong> 部分添加一个条目。该描述可以占据多行。</p>
+</li>
+<li><p><code>@throws 异常描述</code>：该标记能给当前方法的可能抛出的 <strong>异常</strong> 添加一个条目。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="JShell"><a href="#JShell" class="headerlink" title="JShell"></a>JShell</h2><blockquote>
+<p>Java 9 中引入了一种使用 Java 的方法，即 JShell。</p>
+<p>JShell 程序提供了一个 “读取 - 计算 - 打印循环”。键入一个 Java 表达式，JShell 会评估你的输入，打印结果，并等待下一个输入。</p>
+<p>在命令提示符中输入 <code>jshell</code> 以启动 JShell</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sinarcxinx&gt;jshell</span><br></pre></td></tr></table></figure>
+
+<p>在 cmd 中输入 jshell 以启动 JShell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  欢迎使用 JShell -- 版本 11.0.12</span><br><span class="line">|  要大致了解该版本, 请键入: /help intro</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">jshell&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>JShell 会显示一个问候语，之后出现提示符</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">jshell&gt; </span><span class="language-bash">int n1 = 10;</span></span><br><span class="line">n1 ==&gt; 10</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">jshell&gt; </span><span class="language-bash">n1++;</span></span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">2 ==&gt; 10</span></span><br></pre></td></tr></table></figure>
+
+<p>输入一条语句，JShell 会自动打印每条输入语句的值</p>
+<p>其中的 $2 表示该值可以用于将来的计算。上面的 n1 是自己定义的标识符</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">jshell&gt; </span><span class="language-bash">Math.</span></span><br><span class="line">E                 IEEEremainder(    PI                abs(              acos(             addExact(</span><br><span class="line">asin(             atan(             atan2(            cbrt(             ceil(             class</span><br><span class="line">copySign(         cos(              cosh(             decrementExact(   exp(              expm1(</span><br><span class="line">floor(            floorDiv(         floorMod(         fma(              getExponent(      hypot(</span><br><span class="line">incrementExact(   log(              log10(            log1p(            max(              min(</span><br><span class="line">multiplyExact(    multiplyFull(     multiplyHigh(     negateExact(      nextAfter(        nextDown(</span><br><span class="line">nextUp(           pow(              random()          rint(             round(            scalb(</span><br><span class="line">signum(           sin(              sinh(             sqrt(             subtractExact(    tan(</span><br><span class="line">tanh(             toDegrees(        toIntExact(       toRadians(        ulp(</span><br></pre></td></tr></table></figure>
+
+<p>输入不完整的语句后，按 tab 键实现方法补全。上面的场合，提示了所有方法的列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">jshell&gt; </span><span class="language-bash">Math.pow(</span></span><br></pre></td></tr></table></figure>
+
+<p>自动补全后的代码。可以手动填入剩余部分。</p>
+<p>可以按 ↑ 键自动填充运行过的代码，以实现重复运行</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="DOS"><a href="#DOS" class="headerlink" title="DOS"></a>DOS</h3><blockquote>
+<p>DOS：Disk Operating System（磁盘操作系统）</p>
+</blockquote>
+<h4 id="DOS-的基本原理"><a href="#DOS-的基本原理" class="headerlink" title="DOS 的基本原理"></a>DOS 的基本原理</h4><blockquote>
+<p>在 cmd（控制台）输入指令 — DOS系统 接受指令 — 解析指令 — 执行指令</p>
+</blockquote>
+<ul>
+<li><p>相对路径和绝对路径（举例从 JDK8访问到 JDK8）</p>
+<blockquote>
+<p>相对路径：从当前目录开始定位，形成的路径 <code>..\jre\bin\LICENSE</code></p>
+<p>返回上一级：<code>..\</code></p>
+<p>绝对路径：从顶级目录开始定位，形成的路径 <code>d:\Program\JDK8\jre\bin</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="常用的-DOS-命令"><a href="#常用的-DOS-命令" class="headerlink" title="常用的 DOS 命令"></a>常用的 DOS 命令</h4><blockquote>
+<p>查看帮助：<code>help</code> 或 <code>help cd</code> 等</p>
+<p>查看目录内容：<code>dir</code> 查看当前目录</p>
+<p> 或 <code>dir d:\Program\JDK8\bin</code> 查看指定目录</p>
+<p>切换到其他盘：<code>cd /D d:</code> 从 C盘 切换至 D盘</p>
+<p>切换到当前盘的其他目录：<code>cd d:\Program\JDK8\jre\bin</code></p>
+<p>返回上级目录：<code>cd ..</code></p>
+<p>切换至根目录：<code>cd \</code></p>
+<p>查看子集目录：<code>tree</code> 当前目录</p>
+<p> 或 <code>tree d:/Program</code> 指定目录</p>
+<p>清屏：<code>cls</code></p>
+<p>退出：<code>exit</code></p>
+<p>创建&#x2F;删除目录：<code>md 目录名</code> <code>rd 目录名</code></p>
+<p>拷贝&#x2F;删除文件：<code>copy 文件名 目录</code> <code>del 文件名</code></p>
+<p>移动文件：<code>move 文件名 目录</code></p>
+<p>…</p>
+<p><em>[[Dos]]</em></p>
+</blockquote>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">sinarcsinx</div><div class="post-copyright__author_desc">事在人为</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/')">Java 概述</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/wepay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/wepay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picbed.sinarcsinx.fun/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Java 概述&amp;url=https://sinarcsinx.fun/2022/11/26/learn/Java/Java%20%E6%A6%82%E8%BF%B0/&amp;pic=https://picbed.sinarcsinx.fun/markdown/Java.jpeg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sinarcsinx.fun" target="_blank">Sins Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>教程<span class="tagsPageCount">22</span></a><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">20</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://picbed.sinarcsinx.fun/markdown/202412101633593.jpeg" data-sites="facebook,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/26/learn/MarkDown/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/markdown.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MarkDown语法</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/26/learn/Java/Java%20%E5%8F%98%E9%87%8F/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 变量</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2022/12/10/learn/Java/Java%20IO%E6%B5%81/" title="Java IO流"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-10</div><div class="title">Java IO流</div></div></a></div><div><a href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-12</div><div class="title">Java 反射</div></div></a></div><div><a href="/2022/11/26/learn/Java/Java%20%E5%8F%98%E9%87%8F/" title="Java 变量"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-11-26</div><div class="title">Java 变量</div></div></a></div><div><a href="/2022/12/08/learn/Java/Java%20%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/" title="Java 图形界面设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-08</div><div class="title">Java 图形界面设计</div></div></a></div><div><a href="/2022/12/05/learn/Java/Java%20%E5%B8%B8%E7%94%A8%E7%B1%BB/" title="Java 常用类"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-05</div><div class="title">Java 常用类</div></div></a></div><div><a href="/2022/12/09/learn/Java/Java%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java 多线程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-12-09</div><div class="title">Java 多线程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">事在人为</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">sinarcsinx</h1><div class="author-info__desc">事在人为</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/crazyloong5" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/11379256" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%8E%86%E5%8F%B2"><span class="toc-number">1.</span> <span class="toc-text">Java 历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E9%87%8D%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">Java 重要特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E7%9A%84%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">Java 的开发工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E8%BF%90%E8%A1%8C%E5%9F%BA%E7%A1%80"><span class="toc-number">4.</span> <span class="toc-text">Java 运行基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">Java 执行流程分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">5.1.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">5.2.</span> <span class="toc-text">运行</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%8C%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84-Java-%E6%BA%90%E6%96%87%E4%BB%B6%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91"><span class="toc-number">5.2.0.0.1.</span> <span class="toc-text">注意，修改后的 .Java 源文件需要重新编译</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%92%8C%E7%BB%86%E8%8A%82%E8%AF%B4%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">Java 开发注意事项和细节说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">7.</span> <span class="toc-text">代码规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">Java 转义字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">9.</span> <span class="toc-text">注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E7%B1%BB%E5%9E%8B"><span class="toc-number">9.1.</span> <span class="toc-text">注释类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="toc-number">9.2.</span> <span class="toc-text">文档注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-number">9.2.1.</span> <span class="toc-text">注释的插入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JShell"><span class="toc-number">10.</span> <span class="toc-text">JShell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">11.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOS"><span class="toc-number">11.1.</span> <span class="toc-text">DOS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DOS-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">11.1.1.</span> <span class="toc-text">DOS 的基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-DOS-%E5%91%BD%E4%BB%A4"><span class="toc-number">11.1.2.</span> <span class="toc-text">常用的 DOS 命令</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/20/learn/SQL/" title="SQL语言"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/202412101633593.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SQL语言"/></a><div class="content"><a class="title" href="/2022/12/20/learn/SQL/" title="SQL语言">SQL语言</a><time datetime="2022-12-20T00:10:50.000Z" title="发表于 2022-12-20 08:10:50">2022-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/14/learn/Java/Jdbc%20%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Jdbc和数据库连接池"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jdbc和数据库连接池"/></a><div class="content"><a class="title" href="/2022/12/14/learn/Java/Jdbc%20%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="Jdbc和数据库连接池">Jdbc和数据库连接池</a><time datetime="2022-12-14T00:10:50.000Z" title="发表于 2022-12-14 08:10:50">2022-12-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/13/learn/Java/Java%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java 正则表达式"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 正则表达式"/></a><div class="content"><a class="title" href="/2022/12/13/learn/Java/Java%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java 正则表达式">Java 正则表达式</a><time datetime="2022-12-13T00:10:50.000Z" title="发表于 2022-12-13 08:10:50">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 反射"/></a><div class="content"><a class="title" href="/2022/12/12/learn/Java/Java%20%E5%8F%8D%E5%B0%84/" title="Java 反射">Java 反射</a><time datetime="2022-12-12T00:10:50.000Z" title="发表于 2022-12-12 08:10:50">2022-12-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/11/learn/Java/Java%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java 网络编程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/Java.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 网络编程"/></a><div class="content"><a class="title" href="/2022/12/11/learn/Java/Java%20%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Java 网络编程">Java 网络编程</a><time datetime="2022-12-11T00:10:50.000Z" title="发表于 2022-12-11 08:10:50">2022-12-11</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2603327054@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7694200251" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/markdown/avator.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/crazyloong5" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/11379256" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2022 - 2024 By <a class="footer-bar-link" href="/" title="sinarcsinx" target="_blank">sinarcsinx</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/crazyloong5" title="Github">Github</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">1</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://sinarcsinx.fun/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/sin-planet.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">常用网站</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.baidu.com/" title="百度"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://picbed.sinarcsinx.fun/img/baidu.png" alt="百度"/><span class="back-menu-item-text">百度</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?type=:playlist&amp;id=12975125061&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Java/" style="font-size: 0.88rem; color: rgb(159, 134, 131);">Java<sup>20</sup></a><a href="/tags/MarkDown/" style="font-size: 0.88rem; color: rgb(43, 112, 165);">MarkDown<sup>1</sup></a><a href="/tags/SQL/" style="font-size: 0.88rem; color: rgb(129, 59, 93);">SQL<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem; color: rgb(162, 32, 192);">教程<sup>22</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="12975125061" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=12975125061&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎来到SinsBlog!`,
+    "已上线",
+    dnum,
+    "天",
+    "©2022 By sinarcsinx V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，程序员.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by sinarcsinx %c 你正在访问 sinarcsinx 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.sinarcsinx.fun/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.sinarcsinx.fun/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.sinarcsinx.fun/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 1440/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "2603327054@qq.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
