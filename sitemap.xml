@@ -434,7 +434,7 @@
 
   
   <url>
-    <loc>https://sinarcsinx.fun/tags/SQL/</loc>
+    <loc>https://sinarcsinx.fun/tags/MarkDown/</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -448,7 +448,14 @@
   </url>
   
   <url>
-    <loc>https://sinarcsinx.fun/tags/MarkDown/</loc>
+    <loc>https://sinarcsinx.fun/tags/%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2024-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://sinarcsinx.fun/tags/SQL/</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -456,13 +463,6 @@
   
   <url>
     <loc>https://sinarcsinx.fun/tags/Java/</loc>
-    <lastmod>2024-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinarcsinx.fun/tags/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2024-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
