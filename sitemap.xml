@@ -475,6 +475,13 @@
   </url>
   
   <url>
+    <loc>https://sinarcsinx.fun/tags/%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2024-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://sinarcsinx.fun/tags/SQL/</loc>
     <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -483,13 +490,6 @@
   
   <url>
     <loc>https://sinarcsinx.fun/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-12-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://sinarcsinx.fun/tags/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2024-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
